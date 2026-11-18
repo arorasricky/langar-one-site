@@ -155,6 +155,11 @@ input:focus,select:focus{outline:3px solid var(--marigold);outline-offset:1px;bo
 .faq h2{font-family:var(--display);font-size:26px;line-height:1.15;font-weight:700}
 .faq p{color:var(--muted);font-size:18px}
 
+.partners{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px}
+.partners li{background:var(--white);border-radius:20px;padding:30px 26px;font-family:var(--display);font-size:26px;line-height:1.15;font-weight:700;display:flex;align-items:center;min-height:110px}
+.dark-cta{background:var(--forest);color:var(--mist)}
+.dark-cta p{color:var(--soft)}
+
 /* footer */
 .site-footer{background:var(--deep);color:var(--soft)}
 .site-footer .wrap{padding-top:60px;padding-bottom:40px;display:flex;flex-direction:column;gap:40px}
@@ -176,7 +181,8 @@ address{font-style:normal}
 @media (max-width:640px){
 body{font-size:16px}
 .site-header .wrap{padding-top:12px;padding-bottom:12px}
-.nav{gap:0;margin-left:-8px}
+.nav{gap:0;margin-left:-8px;flex-wrap:nowrap;overflow-x:auto;max-width:100%;scrollbar-width:none}
+.nav a{white-space:nowrap}
 .nav a{padding:9px 8px;font-size:15px}
 .hero .wrap{padding-top:36px}
 .hero-copy{padding-bottom:40px;flex-basis:100%}

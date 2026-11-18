@@ -36,7 +36,7 @@ def header(root, home):
              + ('<span class="brand-tag">A 501(c)(3) charity</span>' if home else '') + '</span></a>')
     if home:
         right = ('<nav class="nav" aria-label="Main"><a href="how-it-works/">How It Works</a><a href="#mission">Mission</a><a href="#origin">Origin Story</a>'
-                 '<a href="#impact">Impact</a><a href="faq/">FAQ</a><a href="#involved">Get Involved</a></nav>')
+                 '<a href="#impact">Impact</a><a href="partners/">Partners</a><a href="faq/">FAQ</a><a href="#involved">Get Involved</a></nav>')
     else:
         right = f'<a class="back" href="{root}">{ARROW}Back to Home</a>'
     return f'<header class="site-header"><div class="wrap">{brand}{right}</div></header>'
@@ -48,7 +48,7 @@ def footer(root):
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
 <p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">A 501(c)(3) charity</p></div>
 <nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
-<nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}#involved">Donate</a><a href="{root}plan-event/">Host an Event</a></nav>
+<nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}#involved">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
 </div>
 <div class="foot-base"><span>© 2026 Langar One. All rights reserved.</span>
@@ -198,6 +198,11 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <div class="impact"><b>100%</b><h3>Commitment</h3><p>To ending hunger in our lifetime</p></div>
 </div></div></section>
 
+<section class="white"><div class="wrap" style="padding-top:72px;padding-bottom:72px">
+<div class="cta dark-cta"><div><h2 class="h2s">Serve families or seniors who need groceries?</h2><p>Partner agencies can refer clients to Langar One at no cost. We deliver; you stay focused on your work.</p></div>
+<a class="btn btn-gold btn-lg" href="partners/">Partner With Us</a></div>
+</div></section>
+
 <section id="involved"><div class="wrap section">
 <div class="head"><h2 class="h2">Get Involved</h2><p class="lead">Join us in the fight against hunger. There are many ways you can help make a difference in our communities.</p></div>
 <div class="grid g4">
@@ -223,10 +228,50 @@ HOW = f'''<section class="page-hero"><div class="wrap"><h1>How Langar One Works<
 <div class="wrap section" style="gap:20px">
 <div class="grid g3" style="grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr))">
 <div class="card"><h2 class="h3">Renewable support</h2><p class="muted">Delivery runs for 3 months. If a family's situation hasn't improved, the program renews — continued support for as long as it's truly needed.</p></div>
-<div class="card"><h2 class="h3">Agency submissions welcome</h2><p class="muted">Partner agencies can submit requests on behalf of families — connecting clients to food support without adding burden to them.</p></div>
+<div class="card"><h2 class="h3">Agency submissions welcome</h2><p class="muted">Partner agencies can submit requests on behalf of families — connecting clients to food support without adding burden to them. <a href="../partners/">How partnering works</a></p></div>
 </div>
 <div class="cta"><div><h2 class="h2s">Need groceries, or know a family who does?</h2><p>Requests take a few minutes. It costs families $0.</p></div>
 <a class="btn btn-lg" href="{REQUEST_FORM}" target="_blank" rel="noopener">Request Help</a></div>
+</div>'''
+
+PARTNERS = f'''<section class="page-hero"><div class="wrap"><h1>Partner With Langar One</h1>
+<p>A no-cost grocery bridge for the families and seniors you serve. When a client needs more food support than you can provide, refer them to us and we deliver free groceries to their door.</p></div></section>
+
+<div class="wrap section" style="gap:28px;padding-bottom:0">
+<p class="eyebrow">Organizations we work with</p>
+<ul class="partners">
+<li>Meals on Wheels West</li>
+<li>Project Open Hand</li>
+<li>Sikh Family Center</li>
+</ul>
+</div>
+
+<div class="wrap section">
+<div class="head"><p class="eyebrow">How referrals work</p><h2 class="h2">Three steps, and we handle the rest</h2></div>
+<ol class="steps">
+<li><span class="num">1</span><h3 class="h3">Refer a client</h3><p>Submit a request on your client's behalf through our request form. It takes a few minutes.</p></li>
+<li><span class="num">2</span><h3 class="h3">We confirm eligibility</h3><p>We review each request and confirm the household qualifies for the program.</p></li>
+<li class="last"><span class="num">3</span><h3 class="h3">Groceries arrive</h3><p>We deliver groceries to their door for 3 months. If their situation hasn't improved, the program renews.</p></li>
+</ol>
+</div>
+
+<section class="white"><div class="wrap section">
+<div class="head"><p class="eyebrow">Why agencies refer to us</p><h2 class="h2">Support that works alongside yours</h2>
+<p class="lead">Langar One complements meal programs, food pantries, and case management. We add groceries at home to the support you already provide.</p></div>
+<div class="grid g3">
+<div class="rule"><h3>No cost to you or your clients</h3><p class="muted">Families pay $0 for groceries and delivery, and there is no fee for agencies to refer.</p></div>
+<div class="rule"><h3>No added burden on clients</h3><p class="muted">You can submit the request for them, connecting clients to food support without asking more of them.</p></div>
+<div class="rule"><h3>Dignity and choice</h3><p class="muted">Real groceries — fresh produce, proteins, grains, pantry staples, and dairy — selected around each household's dietary and cultural preferences.</p></div>
+<div class="rule"><h3>Renewable support</h3><p class="muted">Deliveries run for 3 months and renew when a household still needs them.</p></div>
+<div class="rule"><h3>Client information stays protected</h3><p class="muted">We use client details only to verify eligibility and deliver groceries. We never sell, rent, or trade them. See our <a href="../privacy/">Privacy Policy</a>.</p></div>
+<div class="rule"><h3>Open to everyone</h3><p class="muted">Rooted in the Sikh tradition of langar — feeding all, without distinction. We serve every family, regardless of background.</p></div>
+</div>
+</div></section>
+
+<div class="wrap section" style="gap:20px">
+<div class="cta"><div><h2 class="h2s">Have a client who needs groceries?</h2><p>Referrals are reviewed for eligibility and accepted as program capacity allows.</p></div>
+<a class="btn btn-lg" href="{REQUEST_FORM}" target="_blank" rel="noopener">Refer a Client</a></div>
+<div class="card"><h2 class="h3">Want to set up a partnership?</h2><p class="muted">Tell us about your organization and the people you serve. Email <a href="mailto:info@langar.one">info@langar.one</a> and we'll be in touch.</p></div>
 </div>'''
 
 FAQS = [
@@ -360,12 +405,14 @@ def main():
     if not PREVIEW:
         (DIST / "CNAME").write_text("www.langar.one\n")  # GitHub Pages custom domain
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
-    paths = ["", "how-it-works/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
+    paths = ["", "how-it-works/", "partners/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"<url><loc>{SITE}/{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>\n" for p in paths) + "</urlset>\n")
     page("", "Langar One | Free Grocery Delivery for Families in Need", DESC, HOME, home=True)
     page("how-it-works/", "How Free Grocery Delivery Works | Langar One",
          "How Langar One delivers free groceries to families in need: request help, eligibility review, doorstep delivery, and three months of renewable support.", HOW, crumb="How It Works")
+    page("partners/", "Partner With Langar One | Free Grocery Delivery for Your Clients",
+         "Agencies can refer clients to Langar One for free grocery delivery at no cost. See how referrals work, who we work with, and how to partner with us.", PARTNERS, crumb="Partners")
     page("faq/", "FAQ: Free Grocery Delivery for Families | Langar One",
          "Answers about Langar One's free grocery delivery: who qualifies, what it costs, what groceries you receive, how long support lasts, and how to help.", FAQ, crumb="FAQ", extra=FAQ_LD)
     page("volunteer/", "Volunteer With Langar One | Help Deliver Free Groceries",
