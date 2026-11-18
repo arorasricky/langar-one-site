@@ -240,7 +240,7 @@ PARTNERS = f'''<section class="page-hero"><div class="wrap"><h1>Partner With Lan
 <div class="wrap section" style="gap:28px;padding-bottom:0">
 <p class="eyebrow">Organizations we work with</p>
 <ul class="partners">
-<li>Meals on Wheels West</li>
+<li>Meals on Wheels</li>
 <li>Project Open Hand</li>
 <li>Sikh Family Center</li>
 </ul>
