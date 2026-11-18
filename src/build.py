@@ -194,10 +194,10 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <section id="impact" class="dark"><div class="wrap section" style="gap:56px">
 <div class="head"><h2 class="h2">Our Impact</h2><p class="lead">Together, we're making a real difference in the fight against hunger. Here's what we've accomplished so far.</p></div>
 <div class="grid g-impact">
-<div class="impact"><b>2,000+</b><h3>Grocery Deliveries</h3><p>Packages of nutritious food delivered to families</p></div>
-<div class="impact"><b>5</b><h3>States</h3><p>Delivering hope and groceries across the US</p></div>
-<div class="impact"><b>100+</b><h3>Supporters</h3><p>Dedicated individuals making a difference</p></div>
-<div class="impact"><b>100%</b><h3>Commitment</h3><p>To ending hunger in our lifetime</p></div>
+<div class="impact"><b>2,000+</b><h3>Grocery Deliveries</h3><p>Deliveries of nutritious food to families since 2022</p></div>
+<div class="impact"><b>50+</b><h3>Families Today</h3><p>Receiving regular grocery deliveries right now</p></div>
+<div class="impact"><b>5</b><h3>States</h3><p>California, Texas, Georgia, Florida, and New York</p></div>
+<div class="impact"><b>3</b><h3>Months of Support</h3><p>For every approved family, renewable while the need continues</p></div>
 </div></div></section>
 
 <section class="white"><div class="wrap" style="padding-top:72px;padding-bottom:72px">
@@ -318,7 +318,7 @@ FAQS = [
     ("What groceries will I receive?", "A basket of staple groceries — fresh produce, proteins, grains and bread, pantry staples, and dairy — selected around your household's dietary and cultural preferences. Specific items can't be guaranteed and may be substituted based on supply, so please check ingredient labels for allergens."),
     ("How long does support last?", "Approved families receive grocery deliveries for up to three months. If your situation hasn't improved, you can request a renewal, which is reviewed based on continued need and program capacity."),
     ("Can an agency or caseworker request help for a client?", "Yes. Partner agencies can submit requests on behalf of the families they serve, connecting clients to food support without adding burden to them."),
-    ("Where does Langar One deliver?", "We have delivered groceries in 5 states so far and are expanding state by state, with the goal of serving families across the United States."),
+    ("Where does Langar One deliver?", "We have delivered groceries in 5 states so far — California, Texas, Georgia, Florida, and New York — and are expanding state by state, with the goal of serving families across the United States."),
     ("What does \"Langar\" mean? Do I need to be Sikh to get help?", "Langar is a 500-year-old Sikh tradition of free community kitchens that serve meals to all people, embodying equality and service. Langar One brings that tradition to grocery delivery. Help is for everyone, regardless of background."),
     ("How is my personal information used?", 'We use your information only to run the program: to verify eligibility, coordinate and deliver your groceries, and contact you about your delivery. We do not sell, rent, or trade it. See our <a href="../privacy/">Privacy Policy</a> for details.'),
     ("How can I help?", 'You can <a href="../volunteer/">volunteer</a> to help with grocery deliveries, or <a href="../plan-event/">host a food drive, fundraiser, or awareness event</a>. You can also <a href="../donate/">sponsor a family</a>. Questions? Email <a href="mailto:info@langar.one">info@langar.one</a>.'),
