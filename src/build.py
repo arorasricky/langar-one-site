@@ -268,6 +268,8 @@ def main():
     (DIST / "assets" / "favicon.svg").write_text(FAVICON)
     (DIST / "assets" / "logo.svg").write_text(LOGO)
     (DIST / ".nojekyll").write_text("")
+    if not PREVIEW:
+        (DIST / "CNAME").write_text("www.langar.one\n")  # GitHub Pages custom domain
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     paths = ["", "volunteer/", "plan-event/", "terms/", "privacy/"]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
