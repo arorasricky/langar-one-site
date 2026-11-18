@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Builds the Langar One static site into ../docs. Run: python3 build.py"""
-import os, pathlib, re, shutil
+import datetime, json, os, pathlib, re, shutil
 
 SRC = pathlib.Path(__file__).parent
 PREVIEW = bool(os.environ.get("PREVIEW"))
@@ -57,9 +57,17 @@ def footer(root):
 </div></footer>'''
 
 
-def page(path, title, desc, body, home=False, script=False):
+def page(path, title, desc, body, home=False, script=False, crumb=None):
     root = "./" if path == "" else ("/" if path == "404" else "../")
     canonical = f"{SITE}/{path}"
+    noindex = path == "404"
+    data = [ORG, WEBSITE] if home else []
+    if crumb:
+        data.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
+            {"@type": "ListItem", "position": 2, "name": crumb.replace("&amp;", "&"), "item": canonical}]})
+    jsonld = "".join(f'<script type="application/ld+json">{json.dumps(d, ensure_ascii=False)}</script>\n' for d in data)
+    robots = '<meta name="robots" content="noindex">' if noindex else '<meta name="robots" content="index, follow, max-image-preview:large">'
     html = f'''<!doctype html>
 <html lang="en">
 <head>
@@ -67,19 +75,30 @@ def page(path, title, desc, body, home=False, script=False):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc}">
-<link rel="canonical" href="{canonical}">
+{robots}
+{'' if noindex else '<link rel="canonical" href="' + canonical + '">'}
 <meta property="og:type" content="website">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="{SITE}/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Langar One: Ending Hunger, One Delivery at a Time">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{SITE}/assets/og.png">
 <meta property="og:site_name" content="Langar One">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
 <meta property="og:url" content="{canonical}">
 <meta name="theme-color" content="#12392B">
 <link rel="icon" href="{root}assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{root}assets/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{FONTS}">
 <link rel="stylesheet" href="{root}assets/site.css">
-</head>
+{jsonld}</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 {header(root, home)}
@@ -96,6 +115,18 @@ def page(path, title, desc, body, home=False, script=False):
     out = DIST / path / "index.html" if path != "404" else DIST / "404.html"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(html, encoding="utf-8")
+
+
+DESC = "Langar One is a 501(c)(3) charity delivering free groceries to families facing food insecurity across the United States. Request help or get involved."
+ORG = {"@context": "https://schema.org", "@type": "NGO", "@id": f"{SITE}/#organization", "name": "Langar One", "url": f"{SITE}/",
+       "logo": f"{SITE}/assets/logo.png", "image": f"{SITE}/assets/og.png", "slogan": "Ending Hunger, One Delivery at a Time",
+       "description": DESC, "foundingDate": "2022", "email": "info@langar.one", "nonprofitStatus": "https://schema.org/Nonprofit501c3",
+       "areaServed": {"@type": "Country", "name": "United States"},
+       "knowsAbout": ["Food insecurity", "Hunger relief", "Free grocery delivery", "Langar"],
+       "address": {"@type": "PostalAddress", "streetAddress": "46539 Mission Blvd #1021", "addressLocality": "Fremont",
+                   "addressRegion": "CA", "postalCode": "94539", "addressCountry": "US"}}
+WEBSITE = {"@context": "https://schema.org", "@type": "WebSite", "@id": f"{SITE}/#website", "name": "Langar One", "url": f"{SITE}/",
+           "publisher": {"@id": f"{SITE}/#organization"}}
 
 
 def card(ic, title, text):
@@ -265,6 +296,8 @@ def main():
     (DIST / "assets").mkdir(parents=True)
     for f in ("site.css", "site.js"):
         shutil.copy(SRC / f, DIST / "assets" / f)
+    for f in (SRC / "static").iterdir():
+        shutil.copy(f, DIST / "assets" / f.name)
     (DIST / "assets" / "favicon.svg").write_text(FAVICON)
     (DIST / "assets" / "logo.svg").write_text(LOGO)
     (DIST / ".nojekyll").write_text("")
@@ -273,13 +306,14 @@ def main():
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     paths = ["", "volunteer/", "plan-event/", "terms/", "privacy/"]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "".join(f"<url><loc>{SITE}/{p}</loc></url>\n" for p in paths) + "</urlset>\n")
-    page("", "Langar One - Ending Hunger, One Delivery at a Time",
-         "Langar One is a 501(c)(3) charity delivering free groceries to families in need across the United States.", HOME, home=True)
-    page("volunteer/", "Volunteer - Langar One", "Volunteer with Langar One and help deliver groceries to families in need.", VOLUNTEER, script=True)
-    page("plan-event/", "Plan an Event - Langar One", "Host a food drive, fundraiser, or awareness event with Langar One.", EVENT, script=True)
-    page("terms/", "Terms &amp; Conditions - Langar One", "Terms and conditions for the Langar One grocery delivery program.", TERMS)
-    page("privacy/", "Privacy Policy - Langar One", "How Langar One collects, uses and protects your information.", PRIVACY)
+        + "".join(f"<url><loc>{SITE}/{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>\n" for p in paths) + "</urlset>\n")
+    page("", "Langar One | Free Grocery Delivery for Families in Need", DESC, HOME, home=True)
+    page("volunteer/", "Volunteer With Langar One | Help Deliver Free Groceries",
+         "Volunteer with Langar One to help deliver free groceries to families in need. Flexible shifts and direct impact in your community. Apply online.", VOLUNTEER, script=True, crumb="Volunteer")
+    page("plan-event/", "Host a Food Drive or Fundraiser | Langar One",
+         "Plan a food drive, fundraiser, or awareness event with Langar One and help fight hunger in your community. Send us your event proposal.", EVENT, script=True, crumb="Plan an Event")
+    page("terms/", "Terms &amp; Conditions - Langar One", "Terms and conditions for the Langar One free grocery delivery program.", TERMS, crumb="Terms &amp; Conditions")
+    page("privacy/", "Privacy Policy - Langar One", "How Langar One collects, uses and protects the information families share through its grocery delivery request form.", PRIVACY, crumb="Privacy Policy")
     page("404", "Page not found - Langar One", "Page not found.", NOTFOUND)
     print("built", sorted(str(p.relative_to(DIST)) for p in DIST.rglob("*") if p.is_file()))
 
