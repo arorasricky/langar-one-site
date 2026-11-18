@@ -124,7 +124,7 @@ def page(path, title, desc, body, home=False, script=False, crumb=None, extra=No
 DESC = "Langar One is a 501(c)(3) charity delivering free groceries to families facing food insecurity across the United States. Request help or get involved."
 ORG = {"@context": "https://schema.org", "@type": "NGO", "@id": f"{SITE}/#organization", "name": "Langar One", "url": f"{SITE}/",
        "logo": f"{SITE}/assets/logo.png", "image": f"{SITE}/assets/og.png", "slogan": "Ending Hunger, One Delivery at a Time",
-       "description": DESC, "foundingDate": "2022", "email": "info@langar.one", "nonprofitStatus": "https://schema.org/Nonprofit501c3",
+       "description": DESC, "foundingDate": "2021", "email": "info@langar.one", "nonprofitStatus": "https://schema.org/Nonprofit501c3",
        "areaServed": {"@type": "Country", "name": "United States"},
        "knowsAbout": ["Food insecurity", "Hunger relief", "Free grocery delivery", "Langar"],
        "address": {"@type": "PostalAddress", "streetAddress": "46539 Mission Blvd #1021", "addressLocality": "Fremont",
@@ -185,7 +185,7 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <div class="rule"><h3>Our Vision</h3><p class="muted">Eliminate hunger across America, one grocery delivery at a time.</p></div>
 </div>
 <div class="journey"><h3>Our Journey So Far</h3><ol>
-<li><span class="year">2022</span><span class="bar"></span><h4>The Beginning</h4><p class="muted">Langar One was founded with a vision to solve hunger through grocery deliveries during COVID</p></li>
+<li><span class="year">2021</span><span class="bar"></span><h4>The Beginning</h4><p class="muted">Langar One was founded with a vision to solve hunger through grocery deliveries during COVID</p></li>
 <li><span class="year">2024</span><span class="bar"></span><h4>Expanded Reach</h4><p class="muted">Reached 1,000+ deliveries with 20+ supporters helping us make a difference</p></li>
 <li><span class="year">2025</span><span class="bar"></span><h4>Scaling Impact</h4><p class="muted">Reached 2,000+ deliveries with massive expansion plans</p></li>
 </ol></div>
@@ -194,7 +194,7 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <section id="impact" class="dark"><div class="wrap section" style="gap:56px">
 <div class="head"><h2 class="h2">Our Impact</h2><p class="lead">Together, we're making a real difference in the fight against hunger. Here's what we've accomplished so far.</p></div>
 <div class="grid g-impact">
-<div class="impact"><b>2,000+</b><h3>Grocery Deliveries</h3><p>Deliveries of nutritious food to families since 2022</p></div>
+<div class="impact"><b>2,000+</b><h3>Grocery Deliveries</h3><p>Deliveries of nutritious food to families since 2021</p></div>
 <div class="impact"><b>50+</b><h3>Families Today</h3><p>Receiving regular grocery deliveries right now</p></div>
 <div class="impact"><b>5</b><h3>States</h3><p>California, Texas, Georgia, Florida, and New York</p></div>
 <div class="impact"><b>3</b><h3>Months of Support</h3><p>For every approved family, renewable while the need continues</p></div>
