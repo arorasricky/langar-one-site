@@ -48,7 +48,7 @@ def footer(root):
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="foot-grid">
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
-<p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">A 501(c)(3) charity</p></div>
+<p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">Langar One Foundation<br>A 501(c)(3) charity · EIN 41-3146886</p></div>
 <nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
 <nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
@@ -122,7 +122,7 @@ def page(path, title, desc, body, home=False, script=False, crumb=None, extra=No
 
 
 DESC = "Langar One is a 501(c)(3) charity delivering free groceries to families facing food insecurity across the United States. Request help or get involved."
-ORG = {"@context": "https://schema.org", "@type": "NGO", "@id": f"{SITE}/#organization", "name": "Langar One", "url": f"{SITE}/",
+ORG = {"@context": "https://schema.org", "@type": "NGO", "@id": f"{SITE}/#organization", "name": "Langar One", "legalName": "Langar One Foundation", "taxID": "41-3146886", "url": f"{SITE}/",
        "logo": f"{SITE}/assets/logo.png", "image": f"{SITE}/assets/og.png", "slogan": "Ending Hunger, One Delivery at a Time",
        "description": DESC, "foundingDate": "2021", "email": "info@langar.one", "nonprofitStatus": "https://schema.org/Nonprofit501c3",
        "areaServed": {"@type": "Country", "name": "United States"},
@@ -304,9 +304,9 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</
 <div class="rule"><h3>Give online</h3>{ONLINE}</div>
 <div class="rule"><h3>Become a monthly sponsor</h3><p class="muted">A gift of $170 a month keeps groceries arriving for one family, month after month. Sponsor one family or several.</p></div>
 <div class="rule"><h3>Give through your donor-advised fund</h3><p class="muted">Recommend a grant to Langar One from your donor-advised fund.</p>
-<p class="muted"><strong>Organization:</strong> Langar One Foundation<br><strong>EIN:</strong> available on request at <a href="mailto:info@langar.one?subject=EIN%20request">info@langar.one</a><br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539</p></div>
+<p class="muted"><strong>Organization:</strong> Langar One Foundation<br><strong>EIN:</strong> 41-3146886<br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539</p></div>
 </div>
-<p class="muted">Langar One is a 501(c)(3) charity. Donations are tax-deductible to the extent allowed by law.</p>
+<p class="muted">Langar One Foundation is a 501(c)(3) charity, EIN 41-3146886. Donations are tax-deductible to the extent allowed by law.</p>
 </div></section>
 
 <div class="wrap section" style="gap:20px">
