@@ -49,7 +49,7 @@ def footer(root):
 <div class="foot-grid">
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
 <p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">A 501(c)(3) charity</p></div>
-<nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
+<nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
 <nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
 </div>
@@ -300,7 +300,7 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</
 <div class="rule"><h3>Give online</h3>{ONLINE}</div>
 <div class="rule"><h3>Become a monthly sponsor</h3><p class="muted">A gift of $170 a month keeps groceries arriving for one family, month after month. Sponsor one family or several.</p></div>
 <div class="rule"><h3>Give through your donor-advised fund</h3><p class="muted">Recommend a grant to Langar One from your donor-advised fund.</p>
-<p class="muted"><strong>Organization:</strong> Langar One<br><strong>EIN:</strong> available on request at <a href="mailto:info@langar.one?subject=EIN%20request">info@langar.one</a><br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539</p></div>
+<p class="muted"><strong>Organization:</strong> Langar One Foundation<br><strong>EIN:</strong> available on request at <a href="mailto:info@langar.one?subject=EIN%20request">info@langar.one</a><br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539</p></div>
 </div>
 <p class="muted">Langar One is a 501(c)(3) charity. Donations are tax-deductible to the extent allowed by law.</p>
 </div></section>
@@ -308,6 +308,21 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</
 <div class="wrap section" style="gap:20px">
 <div class="cta"><div><h2 class="h2s">Questions about giving?</h2><p>We're glad to talk through sponsorships, donor-advised fund grants, or company giving.</p></div>
 <a class="btn btn-lg" href="mailto:info@langar.one?subject=Giving%20to%20Langar%20One">Email Us</a></div>
+</div>'''
+
+FOUNDERS = '''<section class="page-hero"><div class="wrap"><h1>Our Founders</h1>
+<p>Langar One Foundation was co-founded in 2021 in the San Francisco Bay Area to bring the Sikh tradition of langar to families' doorsteps.</p></div></section>
+<div class="wrap section">
+<div class="founders">
+<article class="founder"><img src="../assets/ricky-arora.jpg" alt="Ricky S. Arora" width="400" height="400" loading="lazy">
+<div><h2 class="h2s">Ricky S. Arora</h2><p class="eyebrow">Co-Founder</p>
+<p class="muted">Ricky co-founded Langar One Foundation with Ginni Jaspal to bring the Sikh tradition of langar to families' doorsteps. A product leader and entrepreneur, he is the co-founder and COO of Observo AI, a security data company acquired by SentinelOne, and an investor and advisor to early-stage startups. He studied at the University of California, Berkeley, and lives in the San Francisco Bay Area.</p></div></article>
+<article class="founder"><img src="../assets/ginni-jaspal.jpg" alt="Ginni Jaspal" width="500" height="500" loading="lazy">
+<div><h2 class="h2s">Ginni Jaspal</h2><p class="eyebrow">Co-Founder</p>
+<p class="muted">Ginni co-founded Langar One Foundation with Ricky S. Arora. An IT professional based in the San Francisco Bay Area, she has helped build Langar One from its first deliveries in 2021.</p></div></article>
+</div>
+<div class="cta"><div><h2 class="h2s">Want to talk with us?</h2><p>We welcome conversations with donors, partner agencies, and volunteers.</p></div>
+<a class="btn btn-lg" href="mailto:info@langar.one">Email Us</a></div>
 </div>'''
 
 FAQS = [
@@ -441,7 +456,7 @@ def main():
     if not PREVIEW:
         (DIST / "CNAME").write_text("www.langar.one\n")  # GitHub Pages custom domain
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
-    paths = ["", "how-it-works/", "partners/", "donate/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
+    paths = ["", "how-it-works/", "partners/", "donate/", "founders/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"<url><loc>{SITE}/{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>\n" for p in paths) + "</urlset>\n")
     page("", "Langar One | Free Grocery Delivery for Families in Need", DESC, HOME, home=True)
@@ -451,6 +466,8 @@ def main():
          "Agencies can refer clients to Langar One for free grocery delivery at no cost. See how referrals work, who we work with, and how to partner with us.", PARTNERS, crumb="Partners")
     page("donate/", "Donate | Sponsor a Family's Groceries | Langar One",
          "Sponsor a family's groceries with Langar One. $170 feeds one family for a month. Give online, monthly, or through your donor-advised fund.", DONATE, crumb="Donate")
+    page("founders/", "Our Founders | Langar One",
+         "Meet Ricky S. Arora and Ginni Jaspal, the co-founders of Langar One Foundation, a 501(c)(3) charity delivering free groceries to families in need.", FOUNDERS, crumb="Our Founders")
     page("faq/", "FAQ: Free Grocery Delivery for Families | Langar One",
          "Answers about Langar One's free grocery delivery: who qualifies, what it costs, what groceries you receive, how long support lasts, and how to help.", FAQ, crumb="FAQ", extra=FAQ_LD)
     page("volunteer/", "Volunteer With Langar One | Help Deliver Free Groceries",
