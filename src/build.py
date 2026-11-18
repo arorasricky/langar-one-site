@@ -160,7 +160,8 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 </div></div></section>
 
 <section id="how" class="white"><div class="wrap section">
-<div class="head"><p class="eyebrow">How it works</p><h2 class="h2">Four steps from request to doorstep</h2></div>
+<div class="head-row"><div class="head"><p class="eyebrow">How it works</p><h2 class="h2">Four steps from request to doorstep</h2></div>
+<figure class="photo wide"><img src="assets/photo-doorstep.jpg" alt="A bag of groceries with eggs, greens and oranges left on a doorstep" width="1200" height="800" loading="lazy"></figure></div>
 {STEPS}
 <p><a class="more" href="how-it-works/">See how Langar One works and what families receive</a> · <a class="more" href="faq/">Read the FAQ</a></p>
 </div></section>
@@ -224,8 +225,9 @@ HOW = f'''<section class="page-hero"><div class="wrap"><h1>How Langar One Works<
 <div class="receive-copy"><p class="eyebrow">What families receive</p>
 <h2 class="h2">Real groceries. Real choice. Delivered with dignity.</h2>
 <p class="lead">Families receive a curated basket of staple groceries — fresh produce, proteins, grains, and pantry essentials — selected around their dietary and cultural preferences.</p>
-<p class="punch">Not a pre-packed charity box. A real grocery shop.</p></div>
-<ul class="groceries"><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-14 14z"/><path d="M5 19l8-8"/></svg><span>Fresh produce</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.500 0 6.500 5.500 6.500 10a6.500 6.500 0 0 1-13 0C5.500 8.500 8.500 3 12 3z"/></svg><span>Protein</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a4 4 0 0 1 4-4h8a4 4 0 0 1 2 7.500V19H6v-4.500A4 4 0 0 1 4 11z"/><path d="M10 11v3"/><path d="M14 11v3"/></svg><span>Grains &amp; bread</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="8" width="12" height="13" rx="2.500"/><path d="M8 4h8v4H8z"/><path d="M6 13h12"/></svg><span>Pantry staples</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6v3l2.500 4V19a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6z"/><path d="M6.500 13h11"/></svg><span>Dairy &amp; milk</span></li></ul>
+<p class="punch">Not a pre-packed charity box. A real grocery shop.</p>
+<ul class="groceries"><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-14 14z"/><path d="M5 19l8-8"/></svg><span>Fresh produce</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.500 0 6.500 5.500 6.500 10a6.500 6.500 0 0 1-13 0C5.500 8.500 8.500 3 12 3z"/></svg><span>Protein</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a4 4 0 0 1 4-4h8a4 4 0 0 1 2 7.500V19H6v-4.500A4 4 0 0 1 4 11z"/><path d="M10 11v3"/><path d="M14 11v3"/></svg><span>Grains &amp; bread</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="8" width="12" height="13" rx="2.500"/><path d="M8 4h8v4H8z"/><path d="M6 13h12"/></svg><span>Pantry staples</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6v3l2.500 4V19a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6z"/><path d="M6.500 13h11"/></svg><span>Dairy &amp; milk</span></li></ul></div>
+<figure class="photo"><img src="../assets/photo-produce.jpg" alt="Fresh produce and eggs laid out on a table: carrots, peppers, bananas, tomatoes, onions and apples" width="960" height="1200" loading="lazy"></figure>
 </div></section>
 <div class="wrap section" style="gap:20px">
 <div class="grid g3" style="grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr))">
@@ -258,8 +260,9 @@ PARTNERS = f'''<section class="page-hero"><div class="wrap"><h1>Partner With Lan
 </div>
 
 <section class="white"><div class="wrap section">
-<div class="head"><p class="eyebrow">Why agencies refer to us</p><h2 class="h2">Support that works alongside yours</h2>
+<div class="head-row"><div class="head"><p class="eyebrow">Why agencies refer to us</p><h2 class="h2">Support that works alongside yours</h2>
 <p class="lead">Langar One complements meal programs, food pantries, and case management. We add groceries at home to the support you already provide.</p></div>
+<figure class="photo small"><img src="../assets/photo-handoff.jpg" alt="Two people passing a paper bag of groceries from one pair of hands to another" width="960" height="1200" loading="lazy"></figure></div>
 <div class="grid g3">
 <div class="rule"><h3>No cost to you or your clients</h3><p class="muted">Families pay $0 for groceries and delivery, and there is no fee for agencies to refer.</p></div>
 <div class="rule"><h3>No added burden on clients</h3><p class="muted">You can submit the request for them, connecting clients to food support without asking more of them.</p></div>
@@ -285,8 +288,9 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</
 <p>Your gift puts real groceries on a family's doorstep. $170 feeds one family for a month — under $6 a day.</p></div></section>
 
 <div class="wrap section">
-<div class="head"><p class="eyebrow">What your gift does</p><h2 class="h2">Your gift becomes groceries at someone's door</h2>
+<div class="head-row"><div class="head"><p class="eyebrow">What your gift does</p><h2 class="h2">Your gift becomes groceries at someone's door</h2>
 <p class="lead">Your financial support helps us purchase and deliver groceries to more families.</p></div>
+<figure class="photo small"><img src="../assets/photo-paper-bag.jpg" alt="A hand lifting an apple out of a paper grocery bag on a kitchen counter" width="960" height="1200" loading="lazy"></figure></div>
 <div class="grid g3">
 <div class="impact give"><b>$6</b><h3>One day</h3><p>Covers a day of groceries for one family.</p></div>
 <div class="impact give"><b>$170</b><h3>One month</h3><p>Sponsors one family's grocery deliveries for a month.</p></div>
@@ -360,7 +364,7 @@ def field(name, label, type_="text", required=False, placeholder="", auto=""):
 VOLUNTEER = f'''<section class="page-hero"><div class="wrap"><h1>Volunteer With Us</h1>
 <p>Join our community of volunteers making a real difference in the fight against hunger. Whether you can spare a few hours a week or a full day, your time matters.</p></div></section>
 <div class="wrap split">
-<div class="why"><h2 class="h2s">Why Volunteer?</h2><div>
+<div class="why"><figure class="photo full"><img src="../assets/photo-tote.jpg" alt="Fruit, vegetables and herbs spilling from a green reusable grocery bag" width="1200" height="800" loading="lazy"></figure><h2 class="h2s">Why Volunteer?</h2><div>
 <div class="rule"><h3>Make a Direct Impact</h3><p class="muted">Every grocery delivery you help with directly supports a family in need</p></div>
 <div class="rule"><h3>Flexible Schedule</h3><p class="muted">Choose volunteer shifts that work with your availability</p></div>
 <div class="rule"><h3>Serve Your Community</h3><p class="muted">Connect with and support families in your local area</p></div>
