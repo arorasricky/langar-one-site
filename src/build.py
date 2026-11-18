@@ -7,6 +7,8 @@ PREVIEW = bool(os.environ.get("PREVIEW"))
 DIST = SRC.parent / ("preview" if PREVIEW else "docs")
 SITE = "https://www.langar.one"
 REQUEST_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdpoP7_V4gVnkZWpGE3dDRKkj0TAPt26lUG5-_h-JF7MszP4w/viewform"
+# Paste the Donorbox campaign link here to switch on the online Donate button.
+DONORBOX_URL = ""
 FONTS = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap"
 
 BASKET = '<path d="M17 30a15 15 0 0 1 30 0" fill="none" stroke="#F2A81D" stroke-width="7" stroke-linecap="round"/><path d="M6 30h52l-5 24a5 5 0 0 1-5 4H16a5 5 0 0 1-5-4z" fill="{body}"/>'
@@ -48,7 +50,7 @@ def footer(root):
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
 <p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">A 501(c)(3) charity</p></div>
 <nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
-<nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}#involved">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a></nav>
+<nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
 </div>
 <div class="foot-base"><span>© 2026 Langar One. All rights reserved.</span>
@@ -207,7 +209,7 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <div class="head"><h2 class="h2">Get Involved</h2><p class="lead">Join us in the fight against hunger. There are many ways you can help make a difference in our communities.</p></div>
 <div class="grid g4">
 <div class="act"><h3>Volunteer</h3><p>Help us pack and deliver groceries to families in need. Every hour counts.</p><a class="btn" href="volunteer/">Sign Up to Volunteer</a></div>
-<div class="act gold"><h3>Donate</h3><p>Your financial support helps us purchase and deliver groceries to more families.</p><span class="pill">Coming Soon</span></div>
+<div class="act gold"><h3>Donate</h3><p>Your financial support helps us purchase and deliver groceries to more families.</p><a class="btn" href="donate/">Ways to Give</a></div>
 <div class="act"><h3>Host an Event</h3><p>Organize a food drive, fundraiser, or awareness event in your community.</p><a class="btn" href="plan-event/">Plan an Event</a></div>
 <div class="act"><h3>Contact Us</h3><p>Have questions or want to learn more? We'd love to hear from you.</p><a class="btn" href="mailto:info@langar.one">Send Message</a></div>
 </div></div></section>'''
@@ -274,6 +276,40 @@ PARTNERS = f'''<section class="page-hero"><div class="wrap"><h1>Partner With Lan
 <div class="card"><h2 class="h3">Want to set up a partnership?</h2><p class="muted">Tell us about your organization and the people you serve. Email <a href="mailto:info@langar.one">info@langar.one</a> and we'll be in touch.</p></div>
 </div>'''
 
+if DONORBOX_URL:
+    ONLINE = f'<p class="muted">Give securely by card or bank transfer, once or monthly.</p><a class="btn btn-gold btn-lg" href="{DONORBOX_URL}" target="_blank" rel="noopener">Donate Online</a>'
+else:
+    ONLINE = '<p class="muted">Online giving is opening soon. To give or sponsor a family now, email <a href="mailto:info@langar.one?subject=Donation%20to%20Langar%20One">info@langar.one</a> and we will help you directly.</p>'
+
+DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</h1>
+<p>Your gift puts real groceries on a family's doorstep. $170 feeds one family for a month — under $6 a day.</p></div></section>
+
+<div class="wrap section">
+<div class="head"><p class="eyebrow">What your gift does</p><h2 class="h2">Your gift becomes groceries at someone's door</h2>
+<p class="lead">Your financial support helps us purchase and deliver groceries to more families.</p></div>
+<div class="grid g3">
+<div class="impact give"><b>$6</b><h3>One day</h3><p>Covers a day of groceries for one family.</p></div>
+<div class="impact give"><b>$170</b><h3>One month</h3><p>Sponsors one family's grocery deliveries for a month.</p></div>
+<div class="impact give"><b>$510</b><h3>A full cycle</h3><p>Sponsors one family through a complete 3-month support cycle.</p></div>
+</div>
+</div>
+
+<section class="white"><div class="wrap section">
+<div class="head"><p class="eyebrow">Ways to give</p><h2 class="h2">Choose what works for you</h2></div>
+<div class="grid g3">
+<div class="rule"><h3>Give online</h3>{ONLINE}</div>
+<div class="rule"><h3>Become a monthly sponsor</h3><p class="muted">A gift of $170 a month keeps groceries arriving for one family, month after month. Sponsor one family or several.</p></div>
+<div class="rule"><h3>Give through your donor-advised fund</h3><p class="muted">Recommend a grant to Langar One from your donor-advised fund.</p>
+<p class="muted"><strong>Organization:</strong> Langar One<br><strong>EIN:</strong> available on request at <a href="mailto:info@langar.one?subject=EIN%20request">info@langar.one</a><br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539</p></div>
+</div>
+<p class="muted">Langar One is a 501(c)(3) charity. Donations are tax-deductible to the extent allowed by law.</p>
+</div></section>
+
+<div class="wrap section" style="gap:20px">
+<div class="cta"><div><h2 class="h2s">Questions about giving?</h2><p>We're glad to talk through sponsorships, donor-advised fund grants, or company giving.</p></div>
+<a class="btn btn-lg" href="mailto:info@langar.one?subject=Giving%20to%20Langar%20One">Email Us</a></div>
+</div>'''
+
 FAQS = [
     ("What is Langar One?", "Langar One is a 501(c)(3) charity that delivers free groceries to families facing food insecurity across the United States. Our mission is to solve hunger and food insecurity by bringing the grocery store directly to families in need."),
     ("Who can get help from Langar One?", "Families in the United States who are facing food insecurity can request help. Every request goes through an eligibility review, and approval also depends on program capacity."),
@@ -285,7 +321,7 @@ FAQS = [
     ("Where does Langar One deliver?", "We have delivered groceries in 5 states so far and are expanding state by state, with the goal of serving families across the United States."),
     ("What does \"Langar\" mean? Do I need to be Sikh to get help?", "Langar is a 500-year-old Sikh tradition of free community kitchens that serve meals to all people, embodying equality and service. Langar One brings that tradition to grocery delivery. Help is for everyone, regardless of background."),
     ("How is my personal information used?", 'We use your information only to run the program: to verify eligibility, coordinate and deliver your groceries, and contact you about your delivery. We do not sell, rent, or trade it. See our <a href="../privacy/">Privacy Policy</a> for details.'),
-    ("How can I help?", 'You can <a href="../volunteer/">volunteer</a> to help with grocery deliveries, or <a href="../plan-event/">host a food drive, fundraiser, or awareness event</a>. Online donations are coming soon. Questions? Email <a href="mailto:info@langar.one">info@langar.one</a>.'),
+    ("How can I help?", 'You can <a href="../volunteer/">volunteer</a> to help with grocery deliveries, or <a href="../plan-event/">host a food drive, fundraiser, or awareness event</a>. You can also <a href="../donate/">sponsor a family</a>. Questions? Email <a href="mailto:info@langar.one">info@langar.one</a>.'),
 ]
 FAQ = ('<section class="page-hero"><div class="wrap"><h1>Frequently Asked Questions</h1>'
        '<p>How free grocery delivery from Langar One works, who qualifies, and how to get involved.</p></div></section>'
@@ -405,7 +441,7 @@ def main():
     if not PREVIEW:
         (DIST / "CNAME").write_text("www.langar.one\n")  # GitHub Pages custom domain
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
-    paths = ["", "how-it-works/", "partners/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
+    paths = ["", "how-it-works/", "partners/", "donate/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"<url><loc>{SITE}/{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>\n" for p in paths) + "</urlset>\n")
     page("", "Langar One | Free Grocery Delivery for Families in Need", DESC, HOME, home=True)
@@ -413,6 +449,8 @@ def main():
          "How Langar One delivers free groceries to families in need: request help, eligibility review, doorstep delivery, and three months of renewable support.", HOW, crumb="How It Works")
     page("partners/", "Partner With Langar One | Free Grocery Delivery for Your Clients",
          "Agencies can refer clients to Langar One for free grocery delivery at no cost. See how referrals work, who we work with, and how to partner with us.", PARTNERS, crumb="Partners")
+    page("donate/", "Donate | Sponsor a Family's Groceries | Langar One",
+         "Sponsor a family's groceries with Langar One. $170 feeds one family for a month. Give online, monthly, or through your donor-advised fund.", DONATE, crumb="Donate")
     page("faq/", "FAQ: Free Grocery Delivery for Families | Langar One",
          "Answers about Langar One's free grocery delivery: who qualifies, what it costs, what groceries you receive, how long support lasts, and how to help.", FAQ, crumb="FAQ", extra=FAQ_LD)
     page("volunteer/", "Volunteer With Langar One | Help Deliver Free Groceries",

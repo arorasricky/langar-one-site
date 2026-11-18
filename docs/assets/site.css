@@ -160,6 +160,9 @@ input:focus,select:focus{outline:3px solid var(--marigold);outline-offset:1px;bo
 .dark-cta{background:var(--forest);color:var(--mist)}
 .dark-cta p{color:var(--soft)}
 
+.impact.give{background:var(--forest);color:var(--mist);border:0}
+.rule .btn{align-self:flex-start;margin-top:8px}
+
 /* footer */
 .site-footer{background:var(--deep);color:var(--soft)}
 .site-footer .wrap{padding-top:60px;padding-bottom:40px;display:flex;flex-direction:column;gap:40px}
