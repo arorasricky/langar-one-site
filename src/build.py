@@ -35,8 +35,8 @@ def header(root, home):
              f'<span class="brand-text"><span class="brand-name">Langar <b>One</b></span>'
              + ('<span class="brand-tag">A 501(c)(3) charity</span>' if home else '') + '</span></a>')
     if home:
-        right = ('<nav class="nav" aria-label="Main"><a href="#mission">Mission</a><a href="#origin">Origin Story</a>'
-                 '<a href="#impact">Impact</a><a href="#involved">Get Involved</a></nav>')
+        right = ('<nav class="nav" aria-label="Main"><a href="how-it-works/">How It Works</a><a href="#mission">Mission</a><a href="#origin">Origin Story</a>'
+                 '<a href="#impact">Impact</a><a href="faq/">FAQ</a><a href="#involved">Get Involved</a></nav>')
     else:
         right = f'<a class="back" href="{root}">{ARROW}Back to Home</a>'
     return f'<header class="site-header"><div class="wrap">{brand}{right}</div></header>'
@@ -47,7 +47,7 @@ def footer(root):
 <div class="foot-grid">
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
 <p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">A 501(c)(3) charity</p></div>
-<nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a></nav>
+<nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
 <nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}#involved">Donate</a><a href="{root}plan-event/">Host an Event</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
 </div>
@@ -57,7 +57,7 @@ def footer(root):
 </div></footer>'''
 
 
-def page(path, title, desc, body, home=False, script=False, crumb=None):
+def page(path, title, desc, body, home=False, script=False, crumb=None, extra=None):
     root = "./" if path == "" else ("/" if path == "404" else "../")
     canonical = f"{SITE}/{path}"
     noindex = path == "404"
@@ -66,6 +66,8 @@ def page(path, title, desc, body, home=False, script=False, crumb=None):
         data.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
             {"@type": "ListItem", "position": 2, "name": crumb.replace("&amp;", "&"), "item": canonical}]})
+    if extra:
+        data.append(extra)
     jsonld = "".join(f'<script type="application/ld+json">{json.dumps(d, ensure_ascii=False)}</script>\n' for d in data)
     robots = '<meta name="robots" content="noindex">' if noindex else '<meta name="robots" content="index, follow, max-image-preview:large">'
     html = f'''<!doctype html>
@@ -133,6 +135,13 @@ def card(ic, title, text):
     return f'<div class="card">{icon(ic)}<h3 class="h3">{title}</h3><p class="muted">{text}</p></div>'
 
 
+STEPS = '''<ol class="steps">
+<li><span class="num">1</span><h3 class="h3">Request assistance</h3><p>A family asks for help through our request form — or a partner agency submits a request on their behalf.</p></li>
+<li><span class="num">2</span><h3 class="h3">Eligibility confirmed</h3><p>We review each request and confirm the family qualifies for the program.</p></li>
+<li><span class="num">3</span><h3 class="h3">Groceries delivered</h3><p>A real grocery shop arrives at their door, at no cost to the family.</p></li>
+<li class="last"><span class="num">4</span><h3 class="h3">3-month support cycle</h3><p>Delivery runs for 3 months. If a family's situation hasn't improved, the program renews — continued support for as long as it's truly needed.</p></li>
+</ol>'''
+
 HOME = f'''<section class="hero" id="top"><div class="wrap">
 <div class="hero-copy"><h1>Ending Hunger,<br>One Delivery at a Time</h1>
 <p>Our mission is to solve hunger and food insecurity by delivering groceries to families in need across the United States.</p>
@@ -147,6 +156,12 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <div class="stat"><b>1 in 8</b><span>Households in the US struggle to put food on the table</span></div>
 <div class="stat"><b>$0</b><span>That's what families pay for our groceries — everyone deserves access to food</span></div>
 </div></div></section>
+
+<section id="how" class="white"><div class="wrap section">
+<div class="head"><p class="eyebrow">How it works</p><h2 class="h2">Four steps from request to doorstep</h2></div>
+{STEPS}
+<p><a class="more" href="how-it-works/">See how Langar One works and what families receive</a> · <a class="more" href="faq/">Read the FAQ</a></p>
+</div></section>
 
 <section id="mission"><div class="wrap section">
 <div class="head"><p class="eyebrow">What we stand for</p><h2 class="h2">Our Mission</h2>
@@ -191,6 +206,47 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <div class="act"><h3>Host an Event</h3><p>Organize a food drive, fundraiser, or awareness event in your community.</p><a class="btn" href="plan-event/">Plan an Event</a></div>
 <div class="act"><h3>Contact Us</h3><p>Have questions or want to learn more? We'd love to hear from you.</p><a class="btn" href="mailto:info@langar.one">Send Message</a></div>
 </div></div></section>'''
+
+
+HOW = f'''<section class="page-hero"><div class="wrap"><h1>How Langar One Works</h1>
+<p>Bringing the grocery store directly to families in need — with dignity, choice, and community. Four steps from request to doorstep.</p></div></section>
+<div class="wrap section">
+{STEPS}
+</div>
+<section class="white"><div class="wrap receive">
+<div class="receive-copy"><p class="eyebrow">What families receive</p>
+<h2 class="h2">Real groceries. Real choice. Delivered with dignity.</h2>
+<p class="lead">Families receive a curated basket of staple groceries — fresh produce, proteins, grains, and pantry essentials — selected around their dietary and cultural preferences.</p>
+<p class="punch">Not a pre-packed charity box. A real grocery shop.</p></div>
+<ul class="groceries"><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19c0-8 5-13 14-14 0 9-5 14-14 14z"/><path d="M5 19l8-8"/></svg><span>Fresh produce</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3.500 0 6.500 5.500 6.500 10a6.500 6.500 0 0 1-13 0C5.500 8.500 8.500 3 12 3z"/></svg><span>Protein</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 11a4 4 0 0 1 4-4h8a4 4 0 0 1 2 7.500V19H6v-4.500A4 4 0 0 1 4 11z"/><path d="M10 11v3"/><path d="M14 11v3"/></svg><span>Grains &amp; bread</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="8" width="12" height="13" rx="2.500"/><path d="M8 4h8v4H8z"/><path d="M6 13h12"/></svg><span>Pantry staples</span></li><li><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2F6B4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6v3l2.500 4V19a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-9L9 6z"/><path d="M6.500 13h11"/></svg><span>Dairy &amp; milk</span></li></ul>
+</div></section>
+<div class="wrap section" style="gap:20px">
+<div class="grid g3" style="grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr))">
+<div class="card"><h2 class="h3">Renewable support</h2><p class="muted">Delivery runs for 3 months. If a family's situation hasn't improved, the program renews — continued support for as long as it's truly needed.</p></div>
+<div class="card"><h2 class="h3">Agency submissions welcome</h2><p class="muted">Partner agencies can submit requests on behalf of families — connecting clients to food support without adding burden to them.</p></div>
+</div>
+<div class="cta"><div><h2 class="h2s">Need groceries, or know a family who does?</h2><p>Requests take a few minutes. It costs families $0.</p></div>
+<a class="btn btn-lg" href="{REQUEST_FORM}" target="_blank" rel="noopener">Request Help</a></div>
+</div>'''
+
+FAQS = [
+    ("What is Langar One?", "Langar One is a 501(c)(3) charity that delivers free groceries to families facing food insecurity across the United States. Our mission is to solve hunger and food insecurity by bringing the grocery store directly to families in need."),
+    ("Who can get help from Langar One?", "Families in the United States who are facing food insecurity can request help. Every request goes through an eligibility review, and approval also depends on program capacity."),
+    ("How much does it cost?", "Nothing. Families pay $0 for the groceries and for delivery."),
+    ("How do I request groceries?", f'Fill out the <a href="{REQUEST_FORM}" target="_blank" rel="noopener">Langar One grocery delivery request form</a>. It should be completed by an adult on behalf of the household, and asks for your name, phone number, delivery address, the number of dependents in your household, and your reason for needing food assistance.'),
+    ("What groceries will I receive?", "A basket of staple groceries — fresh produce, proteins, grains and bread, pantry staples, and dairy — selected around your household's dietary and cultural preferences. Specific items can't be guaranteed and may be substituted based on supply, so please check ingredient labels for allergens."),
+    ("How long does support last?", "Approved families receive grocery deliveries for up to three months. If your situation hasn't improved, you can request a renewal, which is reviewed based on continued need and program capacity."),
+    ("Can an agency or caseworker request help for a client?", "Yes. Partner agencies can submit requests on behalf of the families they serve, connecting clients to food support without adding burden to them."),
+    ("Where does Langar One deliver?", "We have delivered groceries in 5 states so far and are expanding state by state, with the goal of serving families across the United States."),
+    ("What does \"Langar\" mean? Do I need to be Sikh to get help?", "Langar is a 500-year-old Sikh tradition of free community kitchens that serve meals to all people, embodying equality and service. Langar One brings that tradition to grocery delivery. Help is for everyone, regardless of background."),
+    ("How is my personal information used?", 'We use your information only to run the program: to verify eligibility, coordinate and deliver your groceries, and contact you about your delivery. We do not sell, rent, or trade it. See our <a href="../privacy/">Privacy Policy</a> for details.'),
+    ("How can I help?", 'You can <a href="../volunteer/">volunteer</a> to help with grocery deliveries, or <a href="../plan-event/">host a food drive, fundraiser, or awareness event</a>. Online donations are coming soon. Questions? Email <a href="mailto:info@langar.one">info@langar.one</a>.'),
+]
+FAQ = ('<section class="page-hero"><div class="wrap"><h1>Frequently Asked Questions</h1>'
+       '<p>How free grocery delivery from Langar One works, who qualifies, and how to get involved.</p></div></section>'
+       '<div class="faq">' + "".join(f"<section><h2>{q}</h2><p>{a}</p></section>" for q, a in FAQS) + "</div>")
+FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+    {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": re.sub(r"<[^>]+>", "", a)}} for q, a in FAQS]}
 
 
 def field(name, label, type_="text", required=False, placeholder="", auto=""):
@@ -304,10 +360,14 @@ def main():
     if not PREVIEW:
         (DIST / "CNAME").write_text("www.langar.one\n")  # GitHub Pages custom domain
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
-    paths = ["", "volunteer/", "plan-event/", "terms/", "privacy/"]
+    paths = ["", "how-it-works/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"<url><loc>{SITE}/{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>\n" for p in paths) + "</urlset>\n")
     page("", "Langar One | Free Grocery Delivery for Families in Need", DESC, HOME, home=True)
+    page("how-it-works/", "How Free Grocery Delivery Works | Langar One",
+         "How Langar One delivers free groceries to families in need: request help, eligibility review, doorstep delivery, and three months of renewable support.", HOW, crumb="How It Works")
+    page("faq/", "FAQ: Free Grocery Delivery for Families | Langar One",
+         "Answers about Langar One's free grocery delivery: who qualifies, what it costs, what groceries you receive, how long support lasts, and how to help.", FAQ, crumb="FAQ", extra=FAQ_LD)
     page("volunteer/", "Volunteer With Langar One | Help Deliver Free Groceries",
          "Volunteer with Langar One to help deliver free groceries to families in need. Flexible shifts and direct impact in your community. Apply online.", VOLUNTEER, script=True, crumb="Volunteer")
     page("plan-event/", "Host a Food Drive or Fundraiser | Langar One",
