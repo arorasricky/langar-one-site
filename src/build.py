@@ -163,6 +163,7 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <section id="how" class="white"><div class="wrap section">
 <div class="head-row"><div class="head"><p class="eyebrow">How it works</p><h2 class="h2">Four steps from request to doorstep</h2></div>
 <figure class="photo wide"><img src="assets/photo-doorstep.jpg" alt="A bag of groceries with eggs, greens and oranges left on a doorstep" width="1200" height="800" loading="lazy"></figure></div>
+<figure class="video"><video controls playsinline preload="metadata" poster="assets/how-it-works-poster.jpg" width="1920" height="1080" aria-label="How Langar One works, a 60-second video"><source src="assets/how-it-works.mp4" type="video/mp4"><track kind="captions" src="assets/how-it-works.vtt" srclang="en" label="English"></video><figcaption>How Langar One works, in 60 seconds. Music: “Familiar Roads” by <a href="https://github.com/tannerhelland/free-music" rel="noopener">Tanner Helland</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.</figcaption></figure>
 {STEPS}
 <p><a class="more" href="how-it-works/">See how Langar One works and what families receive</a> · <a class="more" href="faq/">Read the FAQ</a></p>
 </div></section>
@@ -220,6 +221,7 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 HOW = f'''<section class="page-hero"><div class="wrap"><h1>How Langar One Works</h1>
 <p>Bringing the grocery store directly to families in need — with dignity, choice, and community. Four steps from request to doorstep.</p></div></section>
 <div class="wrap section">
+<figure class="video"><video controls playsinline preload="metadata" poster="../assets/how-it-works-poster.jpg" width="1920" height="1080" aria-label="How Langar One works, a 60-second video"><source src="../assets/how-it-works.mp4" type="video/mp4"><track kind="captions" src="../assets/how-it-works.vtt" srclang="en" label="English"></video><figcaption>How Langar One works, in 60 seconds. Music: “Familiar Roads” by <a href="https://github.com/tannerhelland/free-music" rel="noopener">Tanner Helland</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.</figcaption></figure>
 {STEPS}
 </div>
 <section class="white"><div class="wrap receive">
