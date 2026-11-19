@@ -9,6 +9,7 @@ SITE = "https://www.langar.one"
 REQUEST_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdpoP7_V4gVnkZWpGE3dDRKkj0TAPt26lUG5-_h-JF7MszP4w/viewform"
 # Paste the Donorbox campaign link here to switch on the online Donate button.
 DONORBOX_URL = "https://donorbox.org/donation-858707"
+CANDID_URL = "https://app.candid.org/profile/16525490/langar-one-foundation-41-3146886"
 FONTS = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap"
 
 BASKET = '<path d="M17 30a15 15 0 0 1 30 0" fill="none" stroke="#F2A81D" stroke-width="7" stroke-linecap="round"/><path d="M6 30h52l-5 24a5 5 0 0 1-5 4H16a5 5 0 0 1-5-4z" fill="{body}"/>'
@@ -48,7 +49,7 @@ def footer(root):
     return f'''<footer class="site-footer"><div class="wrap">
 <div class="foot-grid">
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
-<p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">Langar One Foundation<br>A 501(c)(3) charity · EIN 41-3146886</p></div>
+<p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">Langar One Foundation<br>A 501(c)(3) charity · EIN 41-3146886<br><a href="{CANDID_URL}" target="_blank" rel="noopener">View our Candid profile</a></p></div>
 <nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
 <nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
@@ -122,7 +123,7 @@ def page(path, title, desc, body, home=False, script=False, crumb=None, extra=No
 
 
 DESC = "Langar One is a 501(c)(3) charity delivering free groceries to families facing food insecurity across the United States. Request help or get involved."
-ORG = {"@context": "https://schema.org", "@type": "NGO", "@id": f"{SITE}/#organization", "name": "Langar One", "legalName": "Langar One Foundation", "taxID": "41-3146886", "url": f"{SITE}/",
+ORG = {"@context": "https://schema.org", "@type": "NGO", "@id": f"{SITE}/#organization", "name": "Langar One", "legalName": "Langar One Foundation", "taxID": "41-3146886", "sameAs": [CANDID_URL], "url": f"{SITE}/",
        "logo": f"{SITE}/assets/logo.png", "image": f"{SITE}/assets/og.png", "slogan": "Ending Hunger, One Delivery at a Time",
        "description": DESC, "foundingDate": "2021", "email": "info@langar.one", "nonprofitStatus": "https://schema.org/Nonprofit501c3",
        "areaServed": {"@type": "Country", "name": "United States"},
@@ -319,7 +320,7 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</
 <div class="rule"><h3>Give through your donor-advised fund</h3><p class="muted">Recommend a grant to Langar One from your donor-advised fund.</p>
 <p class="muted"><strong>Organization:</strong> Langar One Foundation<br><strong>EIN:</strong> 41-3146886<br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539</p></div>
 </div>
-<p class="muted">Langar One Foundation is a 501(c)(3) charity, EIN 41-3146886. Donations are tax-deductible to the extent allowed by law.</p>
+<p class="muted">Langar One Foundation is a 501(c)(3) charity, EIN 41-3146886. Donations are tax-deductible to the extent allowed by law. <a href="{CANDID_URL}" target="_blank" rel="noopener">View our nonprofit profile on Candid</a>.</p>
 </div></section>
 
 <div class="wrap section" style="gap:20px">
