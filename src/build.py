@@ -8,7 +8,7 @@ DIST = SRC.parent / ("preview" if PREVIEW else "docs")
 SITE = "https://www.langar.one"
 REQUEST_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdpoP7_V4gVnkZWpGE3dDRKkj0TAPt26lUG5-_h-JF7MszP4w/viewform"
 # Paste the Donorbox campaign link here to switch on the online Donate button.
-DONORBOX_URL = ""
+DONORBOX_URL = "https://donorbox.org/donation-858707"
 FONTS = "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap"
 
 BASKET = '<path d="M17 30a15 15 0 0 1 30 0" fill="none" stroke="#F2A81D" stroke-width="7" stroke-linecap="round"/><path d="M6 30h52l-5 24a5 5 0 0 1-5 4H16a5 5 0 0 1-5-4z" fill="{body}"/>'
@@ -38,7 +38,7 @@ def header(root, home):
              + ('<span class="brand-tag">A 501(c)(3) charity</span>' if home else '') + '</span></a>')
     if home:
         right = ('<nav class="nav" aria-label="Main"><a href="how-it-works/">How It Works</a><a href="#mission">Mission</a><a href="#origin">Origin Story</a>'
-                 '<a href="#impact">Impact</a><a href="partners/">Partners</a><a href="faq/">FAQ</a><a href="#involved">Get Involved</a></nav>')
+                 '<a href="#impact">Impact</a><a href="partners/">Partners</a><a href="faq/">FAQ</a><a href="#involved">Get Involved</a><a class="nav-donate" href="donate/">Donate</a></nav>')
     else:
         right = f'<a class="back" href="{root}">{ARROW}Back to Home</a>'
     return f'<header class="site-header"><div class="wrap">{brand}{right}</div></header>'
