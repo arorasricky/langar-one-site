@@ -180,6 +180,11 @@ input:focus,select:focus{outline:3px solid var(--marigold);outline-offset:1px;bo
 .photo img{display:block;width:100%;height:auto;border-radius:24px}
 .receive-copy .groceries{flex:none;margin-top:8px}
 
+.give{padding-top:72px;padding-bottom:72px;display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:40px 64px}
+.give-copy{flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:16px;padding-top:12px}
+.give-form{flex:1 1 320px;min-width:0;max-width:500px;min-height:420px}
+.give-form iframe{display:block;border:0}
+
 /* footer */
 .site-footer{background:var(--deep);color:var(--soft)}
 .site-footer .wrap{padding-top:60px;padding-bottom:40px;display:flex;flex-direction:column;gap:40px}

@@ -280,12 +280,24 @@ PARTNERS = f'''<section class="page-hero"><div class="wrap"><h1>Partner With Lan
 </div>'''
 
 if DONORBOX_URL:
-    ONLINE = f'<p class="muted">Give securely by card or bank transfer, once or monthly.</p><a class="btn btn-gold btn-lg" href="{DONORBOX_URL}" target="_blank" rel="noopener">Donate Online</a>'
+    ONLINE = f'<p class="muted">Give securely online, once or monthly, using <a href="#give">the form on this page</a>. Prefer a separate window? <a href="{DONORBOX_URL}" target="_blank" rel="noopener">Open the donation form in a new tab</a>.</p>'
+    _slug = DONORBOX_URL.rstrip("/").rsplit("/", 1)[-1]
+    GIVE = f'''<section id="give" class="white"><div class="wrap give">
+<div class="give-copy"><p class="eyebrow">Give now</p><h2 class="h2">Sponsor a family's groceries</h2>
+<p class="lead">$170 feeds one family for a month. Give once, or become a monthly sponsor.</p>
+<p class="muted">Langar One Foundation is a 501(c)(3) charity, EIN 41-3146886. Donations are tax-deductible to the extent allowed by law.</p>
+<p class="muted">Form not loading? <a href="{DONORBOX_URL}" target="_blank" rel="noopener">Donate on our secure Donorbox page</a>.</p></div>
+<div class="give-form"><script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
+<iframe src="https://donorbox.org/embed/{_slug}" name="donorbox" title="Donate to Langar One" allowpaymentrequest="allowpaymentrequest" seamless="seamless" frameborder="0" scrolling="no" height="900px" width="100%" style="max-width: 500px; min-width: 250px; max-height:none!important" allow="payment"></iframe></div>
+</div></section>'''
 else:
+    GIVE = ""
     ONLINE = '<p class="muted">Online giving is opening soon. To give or sponsor a family now, email <a href="mailto:info@langar.one?subject=Donation%20to%20Langar%20One">info@langar.one</a> and we will help you directly.</p>'
 
 DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</h1>
 <p>Your gift puts real groceries on a family's doorstep. $170 feeds one family for a month — under $6 a day.</p></div></section>
+
+{GIVE}
 
 <div class="wrap section">
 <div class="head-row"><div class="head"><p class="eyebrow">What your gift does</p><h2 class="h2">Your gift becomes groceries at someone's door</h2>
