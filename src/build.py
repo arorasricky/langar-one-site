@@ -284,7 +284,7 @@ if DONORBOX_URL:
     _slug = DONORBOX_URL.rstrip("/").rsplit("/", 1)[-1]
     GIVE = f'''<section id="give" class="white"><div class="wrap give">
 <div class="give-copy"><p class="eyebrow">Give now</p><h2 class="h2">Sponsor a family's groceries</h2>
-<p class="lead">$170 feeds one family for a month. Give once, or become a monthly sponsor.</p>
+<p class="lead">$170 feeds one family for a month. Give once, or become a monthly sponsor from $40.</p>
 <p class="muted">Langar One Foundation is a 501(c)(3) charity, EIN 41-3146886. Donations are tax-deductible to the extent allowed by law.</p>
 <p class="muted">Form not loading? <a href="{DONORBOX_URL}" target="_blank" rel="noopener">Donate on our secure Donorbox page</a>.</p></div>
 <div class="give-form"><script src="https://donorbox.org/widget.js" paypalExpress="false"></script>
@@ -303,10 +303,11 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</
 <div class="head-row"><div class="head"><p class="eyebrow">What your gift does</p><h2 class="h2">Your gift becomes groceries at someone's door</h2>
 <p class="lead">Your financial support helps us purchase and deliver groceries to more families.</p></div>
 <figure class="photo small"><img src="../assets/photo-paper-bag.jpg" alt="A hand lifting an apple out of a paper grocery bag on a kitchen counter" width="960" height="1200" loading="lazy"></figure></div>
-<div class="grid g3">
-<div class="impact give"><b>$6</b><h3>One day</h3><p>Covers a day of groceries for one family.</p></div>
-<div class="impact give"><b>$170</b><h3>One month</h3><p>Sponsors one family's grocery deliveries for a month.</p></div>
-<div class="impact give"><b>$510</b><h3>A full cycle</h3><p>Sponsors one family through a complete 3-month support cycle.</p></div>
+<div class="grid g-impact">
+<div class="impact give"><b>$40</b><h3>A month</h3><p>Covers about one week of groceries for a family, every month.</p></div>
+<div class="impact give"><b>$85</b><h3>A month</h3><p>Covers half of one family's groceries, every month.</p></div>
+<div class="impact give"><b>$170</b><h3>A month</h3><p>Sponsors one family's grocery deliveries in full, every month.</p></div>
+<div class="impact give"><b>$510</b><h3>One time</h3><p>Sponsors one family through a complete 3-month support cycle.</p></div>
 </div>
 </div>
 
@@ -314,7 +315,7 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</
 <div class="head"><p class="eyebrow">Ways to give</p><h2 class="h2">Choose what works for you</h2></div>
 <div class="grid g3">
 <div class="rule"><h3>Give online</h3>{ONLINE}</div>
-<div class="rule"><h3>Become a monthly sponsor</h3><p class="muted">A gift of $170 a month keeps groceries arriving for one family, month after month. Sponsor one family or several.</p></div>
+<div class="rule"><h3>Become a monthly sponsor</h3><p class="muted">Monthly gifts start at $40, which covers about a week of groceries. A gift of $170 a month keeps groceries arriving for one family, month after month. Sponsor one family or several.</p></div>
 <div class="rule"><h3>Give through your donor-advised fund</h3><p class="muted">Recommend a grant to Langar One from your donor-advised fund.</p>
 <p class="muted"><strong>Organization:</strong> Langar One Foundation<br><strong>EIN:</strong> 41-3146886<br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539</p></div>
 </div>
@@ -481,7 +482,7 @@ def main():
     page("partners/", "Partner With Langar One | Free Grocery Delivery for Your Clients",
          "Agencies can refer clients to Langar One for free grocery delivery at no cost. See how referrals work, who we work with, and how to partner with us.", PARTNERS, crumb="Partners")
     page("donate/", "Donate | Sponsor a Family's Groceries | Langar One",
-         "Sponsor a family's groceries with Langar One. $170 feeds one family for a month. Give online, monthly, or through your donor-advised fund.", DONATE, crumb="Donate")
+         "Sponsor a family's groceries with Langar One. $170 feeds one family for a month, and monthly gifts start at $40. Give online or through your donor-advised fund.", DONATE, crumb="Donate")
     page("founders/", "Our Founders | Langar One",
          "Meet Ricky S. Arora and Ginni Jaspal, the co-founders of Langar One Foundation, a 501(c)(3) charity delivering free groceries to families in need.", FOUNDERS, crumb="Our Founders")
     page("faq/", "FAQ: Free Grocery Delivery for Families | Langar One",
