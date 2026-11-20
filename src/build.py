@@ -50,7 +50,7 @@ def footer(root):
 <div class="foot-grid">
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
 <p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">Langar One Foundation<br>A 501(c)(3) charity · EIN 41-3146886<br><a href="{CANDID_URL}" target="_blank" rel="noopener">View our Candid profile</a></p></div>
-<nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
+<nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}what-is-langar/">What Is Langar?</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
 <nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
 </div>
@@ -183,7 +183,7 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <p class="lead">From a simple act of service to a movement fighting hunger across America</p></div>
 <div class="quote">{mark(84)}<blockquote>“The Langar tradition teaches us that everyone, regardless of their background, deserves to be fed with dignity and respect.”</blockquote></div>
 <div class="grid g3 wide">
-<div class="rule"><h3>The Langar Tradition</h3><p class="muted">For 500+ years, Sikh Temples have operated "Langar" — free community kitchens serving meals to all people, embodying equality and service.</p></div>
+<div class="rule"><h3>The Langar Tradition</h3><p class="muted">For 500+ years, Sikh Temples have operated "Langar" — free community kitchens serving meals to all people, embodying equality and service. <a href="what-is-langar/">What is langar?</a></p></div>
 <div class="rule"><h3>A Modern Adaptation</h3><p class="muted">Langar One brings this tradition to the 21st century by delivering groceries directly to families facing food insecurity.</p></div>
 <div class="rule"><h3>Our Vision</h3><p class="muted">Eliminate hunger across America, one grocery delivery at a time.</p></div>
 </div>
@@ -345,6 +345,23 @@ FOUNDERS = '''<section class="page-hero"><div class="wrap"><h1>Our Founders</h1>
 <a class="btn btn-lg" href="mailto:info@langar.one">Email Us</a></div>
 </div>'''
 
+LANGAR_QA = [
+    ("Who can eat at a langar?", "Anyone. Langar is open to people of every faith, background, and income, and the meal is always free."),
+    ("How is Langar One connected to langar?", "Langar One is inspired by the tradition. Instead of a shared meal in a gurdwara, we deliver free groceries to the homes of families facing food insecurity, with the same principles: everyone is welcome, and everyone is served with dignity."),
+]
+LANGAR = ('''<section class="page-hero"><div class="wrap"><h1>What Is Langar?</h1>
+<p>Langar is the Sikh tradition of the free community kitchen: a shared meal, served by volunteers, open to everyone. It is the idea Langar One is built on.</p></div></section>
+<div class="faq article">
+<section><h2>A free meal for anyone who walks in</h2>
+<p>Every gurdwara, the Sikh place of worship, has a langar: a kitchen where a free vegetarian meal is cooked and served by volunteers. People of every faith and background sit side by side and eat the same food. Nobody is asked who they are, and nobody is turned away.</p></section>
+<section><h2>Where the tradition comes from</h2>
+<p>Langar goes back more than 500 years to Guru Nanak, the founder of Sikhism. The third Guru, Guru Amar Das, made it a lasting institution with the rule <em>pehle pangat, pichhe sangat</em>: first eat together, then meet together.</p></section>
+<section><h2>From the community kitchen to the doorstep</h2>
+<p>Langar One brings this tradition to families who cannot easily come to a shared table, by delivering free groceries to their homes. The principles are the same: everyone is welcome, and every family is served with dignity. <a href="../how-it-works/">See how Langar One works</a>, or <a href="../donate/">sponsor a family's groceries</a>.</p></section>
+''' + "".join(f"<section><h3>{q}</h3><p>{a}</p></section>" for q, a in LANGAR_QA) + "</div>")
+LANGAR_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+    {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in LANGAR_QA]}
+
 FAQS = [
     ("What is Langar One?", "Langar One is a 501(c)(3) charity that delivers free groceries to families facing food insecurity across the United States. Our mission is to solve hunger and food insecurity by bringing the grocery store directly to families in need."),
     ("Who can get help from Langar One?", "Families in the United States who are facing food insecurity can request help. Every request goes through an eligibility review, and approval also depends on program capacity."),
@@ -354,7 +371,7 @@ FAQS = [
     ("How long does support last?", "Approved families receive grocery deliveries for up to three months. If your situation hasn't improved, you can request a renewal, which is reviewed based on continued need and program capacity."),
     ("Can an agency or caseworker request help for a client?", "Yes. Partner agencies can submit requests on behalf of the families they serve, connecting clients to food support without adding burden to them."),
     ("Where does Langar One deliver?", "We have delivered groceries in 5 states so far — California, Texas, Georgia, Florida, and New York — and are expanding state by state, with the goal of serving families across the United States."),
-    ("What does \"Langar\" mean? Do I need to be Sikh to get help?", "Langar is a 500-year-old Sikh tradition of free community kitchens that serve meals to all people, embodying equality and service. Langar One brings that tradition to grocery delivery. Help is for everyone, regardless of background."),
+    ("What does \"Langar\" mean? Do I need to be Sikh to get help?", "Langar is a 500-year-old Sikh tradition of free community kitchens that serve meals to all people, embodying equality and service. Langar One brings that tradition to grocery delivery. Help is for everyone, regardless of background. <a href=\"../what-is-langar/\">Read more about langar</a>."),
     ("How is my personal information used?", 'We use your information only to run the program: to verify eligibility, coordinate and deliver your groceries, and contact you about your delivery. We do not sell, rent, or trade it. See our <a href="../privacy/">Privacy Policy</a> for details.'),
     ("How can I help?", 'You can <a href="../volunteer/">volunteer</a> to help with grocery deliveries, or <a href="../plan-event/">host a food drive, fundraiser, or awareness event</a>. You can also <a href="../donate/">sponsor a family</a>. Questions? Email <a href="mailto:info@langar.one">info@langar.one</a>.'),
 ]
@@ -476,7 +493,7 @@ def main():
     if not PREVIEW:
         (DIST / "CNAME").write_text("www.langar.one\n")  # GitHub Pages custom domain
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
-    paths = ["", "how-it-works/", "partners/", "donate/", "founders/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
+    paths = ["", "what-is-langar/", "how-it-works/", "partners/", "donate/", "founders/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"<url><loc>{SITE}/{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>\n" for p in paths) + "</urlset>\n")
     page("", "Langar One | Free Grocery Delivery for Families in Need", DESC, HOME, home=True)
@@ -488,6 +505,8 @@ def main():
          "Sponsor a family's groceries with Langar One. $170 feeds one family for a month, and monthly gifts start at $40. Give online or through your donor-advised fund.", DONATE, crumb="Donate")
     page("founders/", "Our Founders | Langar One",
          "Meet Ricky S. Arora and Ginni Jaspal, the co-founders of Langar One Foundation, a 501(c)(3) charity delivering free groceries to families in need.", FOUNDERS, crumb="Our Founders")
+    page("what-is-langar/", "What Is Langar? The Sikh Free Community Kitchen | Langar One",
+         "Langar is the Sikh tradition of the free community kitchen, open to everyone. Learn what langar means, where it comes from, and how Langar One carries it forward.", LANGAR, crumb="What Is Langar?", extra=LANGAR_LD)
     page("faq/", "FAQ: Free Grocery Delivery for Families | Langar One",
          "Answers about Langar One's free grocery delivery: who qualifies, what it costs, what groceries you receive, how long support lasts, and how to help.", FAQ, crumb="FAQ", extra=FAQ_LD)
     page("volunteer/", "Volunteer With Langar One | Help Deliver Free Groceries",

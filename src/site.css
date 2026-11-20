@@ -189,6 +189,10 @@ input:focus,select:focus{outline:3px solid var(--marigold);outline-offset:1px;bo
 .give-form{flex:1 1 320px;min-width:0;max-width:500px;min-height:420px}
 .give-form iframe{display:block;border:0}
 
+.article section p+p{margin-top:4px}
+.article h3{font-family:var(--display);font-size:22px;line-height:1.2;font-weight:700}
+.article a{font-weight:600}
+
 /* footer */
 .site-footer{background:var(--deep);color:var(--soft)}
 .site-footer .wrap{padding-top:60px;padding-bottom:40px;display:flex;flex-direction:column;gap:40px}
