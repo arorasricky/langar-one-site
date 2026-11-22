@@ -4,6 +4,7 @@ import datetime, json, os, pathlib, re, shutil, sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from pages_seo import seo_pages
+from articles import story_pages
 
 SRC = pathlib.Path(__file__).parent
 PREVIEW = bool(os.environ.get("PREVIEW"))
@@ -53,7 +54,7 @@ def footer(root):
 <div class="foot-grid">
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
 <p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">Langar One Foundation<br>A 501(c)(3) charity · EIN 41-3146886<br><a href="{CANDID_URL}" target="_blank" rel="noopener">View our Candid profile</a></p></div>
-<nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}what-is-langar/">What Is Langar?</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
+<nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}what-is-langar/">What Is Langar?</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a><a href="{root}stories/">Stories</a></nav>
 <nav class="foot-col" aria-label="Get help"><strong>Get Help</strong><a href="{REQUEST_FORM}" target="_blank" rel="noopener">Request Help</a><a href="{root}free-groceries/">Free Groceries</a><a href="{root}seniors/">For Seniors</a><a href="{root}food-pantry-alternative/">Food Pantry Alternative</a><a href="{root}locations/">Where We Deliver</a></nav>
 <nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a><a href="{root}corporate-giving/">Corporate Giving</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
@@ -542,6 +543,7 @@ Founded in 2021 and based in the San Francisco Bay Area. Approved families recei
 - [Food Pantry Alternative]({SITE}/food-pantry-alternative/): for people who cannot get to a food pantry
 - [Where We Deliver]({SITE}/locations/): cities served, including Los Angeles and San Francisco
 - [Corporate Giving]({SITE}/corporate-giving/): how companies sponsor families and match employee gifts
+- [Stories & Updates]({SITE}/stories/): articles on langar, getting free groceries delivered, and helping older adults find food
 - [Privacy Policy]({SITE}/privacy/)
 - [Terms & Conditions]({SITE}/terms/)
 
@@ -570,7 +572,8 @@ def main():
         (DIST / "CNAME").write_text("www.langar.one\n")  # GitHub Pages custom domain
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
     extra_pages = seo_pages(STEPS, REQUEST_FORM)
-    paths = ["", "what-is-langar/", "how-it-works/", "partners/", "donate/", "founders/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"] + [p["path"] for p in extra_pages]
+    stories = story_pages(REQUEST_FORM)
+    paths = ["", "what-is-langar/", "how-it-works/", "partners/", "donate/", "founders/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"] + [p["path"] for p in extra_pages] + [p["path"] for p in stories]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"<url><loc>{SITE}/{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>\n" for p in paths) + "</urlset>\n")
     page("", "Langar One | Free Grocery Delivery for Families in Need", DESC, HOME, home=True)
@@ -597,6 +600,8 @@ def main():
         ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
             {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]} if faq else None
         page(p["path"], p["title"], p["desc"], p["body"], crumb=p["crumb"], extra=ld, parent=p.get("parent"))
+    for p in stories:
+        page(p["path"], p["title"], p["desc"], p["body"], crumb=p["crumb"], extra=p["ld"], parent=p.get("parent"))
     page("404", "Page not found - Langar One", "Page not found.", NOTFOUND)
     print("built", sorted(str(p.relative_to(DIST)) for p in DIST.rglob("*") if p.is_file()))
 
