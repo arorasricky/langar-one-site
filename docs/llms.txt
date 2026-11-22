@@ -1,0 +1,23 @@
+# Langar One
+
+> Langar One (Langar One Foundation) is a 501(c)(3) charity, EIN 41-3146886, that delivers free groceries to families facing food insecurity across the United States. It is inspired by langar, the Sikh tradition of the free community kitchen. Families pay $0.
+
+Founded in 2021 and based in the San Francisco Bay Area. Approved families receive grocery deliveries for three months, renewable while the need continues. Contact: info@langar.one
+
+## Pages
+
+- [Home](https://www.langar.one/): mission, impact, and ways to get involved
+- [How It Works](https://www.langar.one/how-it-works/): the four steps from request to doorstep and what families receive
+- [What Is Langar?](https://www.langar.one/what-is-langar/): the tradition Langar One is built on
+- [FAQ](https://www.langar.one/faq/): who qualifies, cost, what is delivered, and how long support lasts
+- [Partners](https://www.langar.one/partners/): how agencies refer clients at no cost
+- [Donate](https://www.langar.one/donate/): sponsor a family's groceries; $170 feeds one family for a month
+- [Volunteer](https://www.langar.one/volunteer/): ways to help and the volunteer application
+- [Plan an Event](https://www.langar.one/plan-event/): host a food drive, fundraiser, or awareness event
+- [Our Founders](https://www.langar.one/founders/): who started Langar One and why
+- [Privacy Policy](https://www.langar.one/privacy/)
+- [Terms & Conditions](https://www.langar.one/terms/)
+
+## Request help
+
+- [Grocery delivery request form](https://docs.google.com/forms/d/e/1FAIpQLSdpoP7_V4gVnkZWpGE3dDRKkj0TAPt26lUG5-_h-JF7MszP4w/viewform)

@@ -8,3 +8,5 @@ Static site for [langar.one](https://www.langar.one).
 To change the site, edit files in `src/`, then run `python3 src/build.py` and commit both folders.
 
 Form submissions: set the Google Form details at the top of `src/site.js`.
+
+Optional: `pip install rcssmin rjsmin` before building so the CSS and JavaScript are minified.

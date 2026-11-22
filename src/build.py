@@ -341,6 +341,10 @@ FOUNDERS = '''<section class="page-hero"><div class="wrap"><h1>Our Founders</h1>
 <div><h2 class="h2s">Ginni Jaspal</h2><p class="eyebrow">Co-Founder</p>
 <p class="muted">Ginni co-founded Langar One Foundation with Ricky S. Arora. An IT professional based in the San Francisco Bay Area, she has helped build Langar One from its first deliveries in 2021.</p></div></article>
 </div>
+<div class="head"><p class="eyebrow">Why we started Langar One</p><h2 class="h2">A 500-year-old tradition, delivered</h2>
+<p class="muted">Langar One was founded in 2021, during COVID, with a vision to solve hunger through grocery deliveries. It grew out of langar, the Sikh tradition of free community kitchens that serve a meal to everyone, embodying equality and service. <a href="../what-is-langar/">Learn what langar is</a>.</p>
+<p class="muted">Instead of a shared meal in one place, Langar One brings the grocery store directly to families in need, so they can cook the food they know in their own kitchens. Since 2021 we have made more than 2,000 grocery deliveries across five states. <a href="../how-it-works/">See how it works</a>.</p>
+<p class="muted">Langar One Foundation is a 501(c)(3) charity, EIN 41-3146886. You can <a href="../donate/">sponsor a family's groceries</a>, <a href="../partners/">partner with us</a>, or <a href="../volunteer/">volunteer</a>.</p></div>
 <div class="cta"><div><h2 class="h2s">Want to talk with us?</h2><p>We welcome conversations with donors, partner agencies, and volunteers.</p></div>
 <a class="btn btn-lg" href="mailto:info@langar.one">Email Us</a></div>
 </div>'''
@@ -410,7 +414,19 @@ VOLUNTEER = f'''<section class="page-hero"><div class="wrap"><h1>Volunteer With 
 {field("cityState", "City/State", placeholder="e.g., San Francisco, CA")}
 <button class="btn btn-gold" type="submit">Submit Application</button>
 <p class="form-msg" role="status" tabindex="-1" hidden></p>
-</form></div>'''
+</form></div>
+<section class="white"><div class="wrap section">
+<div class="head"><p class="eyebrow">Ways to help</p><h2 class="h2">There is a place for everyone</h2>
+<p class="lead">Langar One delivers free groceries to families facing food insecurity. Volunteers help us reach more of them, whatever time or skills they can offer.</p></div>
+<div class="grid g3">
+<div class="rule"><h3>Help with deliveries</h3><p class="muted">Help us pack and deliver groceries to families in need in your area. Every hour counts.</p></div>
+<div class="rule"><h3>Spread the word</h3><p class="muted">Tell families, caseworkers, and community groups that free grocery delivery is available, and share our <a href="../how-it-works/">How It Works</a> page with anyone who could use it.</p></div>
+<div class="rule"><h3>Host an event</h3><p class="muted">Organize a food drive, fundraiser, or awareness event at your workplace, school, or community center. <a href="../plan-event/">Plan an event</a>.</p></div>
+</div>
+<div class="head"><h2 class="h2s">What happens after you apply</h2>
+<p class="muted">Once you send the application, we will get in touch by email with volunteer opportunities that fit your location and availability. Whether you can spare a few hours a week or a full day, your time matters. Have a question first? Email <a href="mailto:info@langar.one">info@langar.one</a>.</p>
+<p class="muted">Langar One is rooted in the Sikh tradition of langar, where volunteers cook and serve a free meal to everyone who comes. <a href="../what-is-langar/">Learn what langar is</a> and why service is at the heart of it.</p></div>
+</div></section>'''
 
 EVENT = f'''<section class="page-hero"><div class="wrap"><h1>Plan an Event</h1>
 <p>Host a food drive, fundraiser, or awareness event in your community. Together, we can make a bigger impact in the fight against hunger.</p></div></section>
@@ -428,7 +444,18 @@ EVENT = f'''<section class="page-hero"><div class="wrap"><h1>Plan an Event</h1>
 {field("location", "Location", placeholder="City, State or venue address")}
 <button class="btn btn-gold" type="submit">Submit Event Proposal</button>
 <p class="form-msg" role="status" tabindex="-1" hidden></p>
-</form></div>'''
+</form></div>
+<section class="white"><div class="wrap section">
+<div class="head"><p class="eyebrow">How it works</p><h2 class="h2">From idea to event in three steps</h2></div>
+<ol class="steps">
+<li><span class="num">1</span><h3 class="h3">Send your proposal</h3><p>Tell us what kind of event you have in mind, where it would be, and who is organizing it.</p></li>
+<li><span class="num">2</span><h3 class="h3">We help you plan</h3><p>We will get in touch to talk through your idea and help bring it to life.</p></li>
+<li class="last"><span class="num">3</span><h3 class="h3">Your event feeds families</h3><p>What you raise helps us purchase and deliver groceries to more families in need.</p></li>
+</ol>
+<div class="head"><h2 class="h2s">What your event can do</h2>
+<p class="muted">It costs about $170 to deliver groceries to one family for a month. A workplace fundraiser, a school food drive, or a community dinner can sponsor a family for a month or for a full three-month support cycle. Supporters can also <a href="../donate/">give directly online</a>.</p>
+<p class="muted">Events are also one of the best ways to tell people about food insecurity and about langar, the Sikh tradition of feeding everyone without distinction. <a href="../what-is-langar/">Learn what langar is</a>, or see <a href="../how-it-works/">how Langar One works</a>.</p></div>
+</div></section>'''
 
 
 def legal(title, intro, sections):
@@ -479,17 +506,53 @@ FAVICON = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect wi
 LOGO = f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">{BASKET.format(body="#12392B")}</svg>'
 
 
+try:  # optional: pip install rcssmin rjsmin (the site still builds without them, just unminified)
+    from rcssmin import cssmin as _cssmin
+    from rjsmin import jsmin as _jsmin
+except ImportError:
+    _cssmin = _jsmin = lambda text: text
+
+LLMS = f"""# Langar One
+
+> Langar One (Langar One Foundation) is a 501(c)(3) charity, EIN 41-3146886, that delivers free groceries to families facing food insecurity across the United States. It is inspired by langar, the Sikh tradition of the free community kitchen. Families pay $0.
+
+Founded in 2021 and based in the San Francisco Bay Area. Approved families receive grocery deliveries for three months, renewable while the need continues. Contact: info@langar.one
+
+## Pages
+
+- [Home]({SITE}/): mission, impact, and ways to get involved
+- [How It Works]({SITE}/how-it-works/): the four steps from request to doorstep and what families receive
+- [What Is Langar?]({SITE}/what-is-langar/): the tradition Langar One is built on
+- [FAQ]({SITE}/faq/): who qualifies, cost, what is delivered, and how long support lasts
+- [Partners]({SITE}/partners/): how agencies refer clients at no cost
+- [Donate]({SITE}/donate/): sponsor a family's groceries; $170 feeds one family for a month
+- [Volunteer]({SITE}/volunteer/): ways to help and the volunteer application
+- [Plan an Event]({SITE}/plan-event/): host a food drive, fundraiser, or awareness event
+- [Our Founders]({SITE}/founders/): who started Langar One and why
+- [Privacy Policy]({SITE}/privacy/)
+- [Terms & Conditions]({SITE}/terms/)
+
+## Request help
+
+- [Grocery delivery request form]({REQUEST_FORM})
+"""
+
+
 def main():
     if DIST.exists():
         shutil.rmtree(DIST)
     (DIST / "assets").mkdir(parents=True)
-    for f in ("site.css", "site.js"):
-        shutil.copy(SRC / f, DIST / "assets" / f)
+    for f, minify in (("site.css", _cssmin), ("site.js", _jsmin)):
+        (DIST / "assets" / f).write_text(minify((SRC / f).read_text(encoding="utf-8")), encoding="utf-8")
     for f in (SRC / "static").iterdir():
-        shutil.copy(f, DIST / "assets" / f.name)
+        if f.name != "favicon.ico":
+            shutil.copy(f, DIST / "assets" / f.name)
     (DIST / "assets" / "favicon.svg").write_text(FAVICON)
     (DIST / "assets" / "logo.svg").write_text(LOGO)
     (DIST / ".nojekyll").write_text("")
+    (DIST / "llms.txt").write_text(LLMS, encoding="utf-8")
+    if (SRC / "static" / "favicon.ico").exists():
+        shutil.copy(SRC / "static" / "favicon.ico", DIST / "favicon.ico")
     if not PREVIEW:
         (DIST / "CNAME").write_text("www.langar.one\n")  # GitHub Pages custom domain
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
