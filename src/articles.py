@@ -4,17 +4,17 @@ Each article is a dict: slug, title (H1), seo (title tag), desc, date (ISO), lea
 In body text, {R} is the path back to the site root and {FORM} is the grocery request form.
 Bodies are a list of (heading, html) sections.
 """
-import datetime
+import datetime, os
 
 SITE = "https://www.langar.one"
 
-ARTICLES = [
+_ALL = [
     dict(
         slug="langar-vs-food-pantry",
         title="Langar vs. Food Pantry: What's the Difference?",
         seo="Langar vs. Food Pantry: What's the Difference? | Langar One",
         desc="A langar serves a free meal to anyone who walks in. A food pantry gives out groceries to take home. Here is how they differ, and where Langar One fits.",
-        date="2026-11-21",
+        date="2026-11-28",
         lead="Both feed people for free. A langar serves a cooked meal to anyone who walks in. A food pantry gives out groceries to take home. Here is how they compare, and where Langar One fits.",
         summary="A langar serves a free meal to everyone. A food pantry gives out groceries. How the two compare, and where Langar One fits.",
         body=[
@@ -65,7 +65,7 @@ ARTICLES = [
         title="How to Get Free Groceries for an Aging Parent or Neighbor",
         seo="How to Get Free Groceries for an Aging Parent or Neighbor | Langar One",
         desc="You can request free grocery delivery on behalf of a parent, relative, or neighbor. Here is what to have ready, what to expect, and other help for older adults.",
-        date="2026-11-21",
+        date="2026-12-05",
         lead="Many older adults will not ask for help with food, even when the fridge is close to empty. You can ask for them. Here is how.",
         summary="You can request free grocery delivery on someone else's behalf. What to have ready and what to expect.",
         body=[
@@ -91,7 +91,7 @@ ARTICLES = [
         title="Why We Deliver Groceries, Not Meals",
         seo="Why We Deliver Groceries, Not Meals | Langar One",
         desc="Langar One is inspired by a tradition of shared meals, yet we deliver groceries. Here is why: choice, dignity, food that fits each family, and reach.",
-        date="2026-11-21",
+        date="2026-12-19",
         lead="Langar One is named for a tradition built around a shared, cooked meal. So why do we deliver bags of groceries instead?",
         summary="Langar is a tradition of shared meals. Here is why Langar One delivers groceries to the door instead.",
         body=[
@@ -114,7 +114,7 @@ ARTICLES = [
         title="The History of Langar: 500 Years of Feeding Everyone",
         seo="The History of Langar: 500 Years of Free Community Kitchens | Langar One",
         desc="The history of langar, the Sikh free community kitchen: from Guru Nanak in the 1500s to gurdwaras that serve free meals to everyone around the world today.",
-        date="2026-11-21",
+        date="2026-12-12",
         lead="Langar, the Sikh free community kitchen, has served free meals to anyone who comes for more than five centuries. This is a short history of how it began and why it has lasted.",
         summary="How the Sikh free community kitchen began with Guru Nanak and grew into a tradition practiced around the world.",
         body=[
@@ -145,7 +145,13 @@ def _nice(iso):
 
 
 def story_pages(form):
-    """Return page dicts (same shape as pages_seo) for the index and each article."""
+    """Return page dicts (same shape as pages_seo) for the index and each article.
+
+    An article goes live on its date: the build skips any dated in the future, newest first on the index.
+    Set PUBLISH_ALL=1 to preview everything.
+    """
+    today = datetime.date.today().isoformat()
+    ARTICLES = sorted((a for a in _ALL if os.environ.get("PUBLISH_ALL") or a["date"] <= today), key=lambda a: a["date"], reverse=True)
     pages = []
     cards = "".join(
         f'<div class="card"><p class="eyebrow">{_nice(a["date"])}</p><h2 class="h3"><a href="{a["slug"]}/">{a["title"]}</a></h2>'
@@ -164,7 +170,7 @@ def story_pages(form):
     for i, a in enumerate(ARTICLES):
         sections = "".join(f"<section><h2>{h}</h2>{html}</section>" for h, html in a["body"]).replace("{FORM}", form)
         others = [o for o in ARTICLES if o is not a]
-        more = "".join(f'<a href="../{o["slug"]}/">{o["title"]}</a><br>' for o in (others[i % len(others):] + others[:i % len(others)])[:3])
+        more = "".join(f'<a href="../{o["slug"]}/">{o["title"]}</a><br>' for o in others[:3])
         path = f"stories/{a['slug']}/"
         pages.append(dict(
             path=path, crumb=a["title"], parent=("Stories", "stories/"),
