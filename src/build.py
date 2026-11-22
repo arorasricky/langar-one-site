@@ -128,8 +128,8 @@ def page(path, title, desc, body, home=False, script=False, crumb=None, extra=No
     out.write_text(html, encoding="utf-8")
 
 
-DESC = "Langar One is a 501(c)(3) charity delivering free groceries to families facing food insecurity across the United States. Request help or get involved."
-ORG = {"@context": "https://schema.org", "@type": "NGO", "@id": f"{SITE}/#organization", "name": "Langar One", "legalName": "Langar One Foundation", "taxID": "41-3146886", "sameAs": [CANDID_URL], "url": f"{SITE}/",
+DESC = "Langar One is a charity inspired by langar, the Sikh free community kitchen. We deliver free groceries to families facing food insecurity across the US."
+ORG = {"@context": "https://schema.org", "@type": "NGO", "@id": f"{SITE}/#organization", "name": "Langar One", "alternateName": "Langar One Foundation", "legalName": "Langar One Foundation", "taxID": "41-3146886", "sameAs": [CANDID_URL], "url": f"{SITE}/",
        "logo": f"{SITE}/assets/logo.png", "image": f"{SITE}/assets/og.png", "slogan": "Ending Hunger, One Delivery at a Time",
        "description": DESC, "foundingDate": "2021", "email": "info@langar.one", "nonprofitStatus": "https://schema.org/Nonprofit501c3",
        "areaServed": {"@type": "Country", "name": "United States"},
@@ -152,7 +152,7 @@ STEPS = '''<ol class="steps">
 </ol>'''
 
 HOME = f'''<section class="hero" id="top"><div class="wrap">
-<div class="hero-copy"><h1>Ending Hunger,<br>One Delivery at a Time</h1>
+<div class="hero-copy"><p class="hero-kicker">Free grocery delivery, inspired by langar</p><h1>Ending Hunger,<br>One Delivery at a Time</h1>
 <p>Our mission is to solve hunger and food insecurity by delivering groceries to families in need across the United States.</p>
 <a class="btn btn-gold btn-lg" href="{REQUEST_FORM}" target="_blank" rel="noopener">Request Help</a></div>
 <div class="hero-art"><svg viewBox="0 0 460 440" aria-hidden="true"><path d="M110 250a120 120 0 0 1 240 0" fill="none" stroke="#F2A81D" stroke-width="46" stroke-linecap="round"/><path d="M20 250h420l-34 190H54z" fill="#F3F6F1"/><path d="M31 313h398" fill="none" stroke="#C9D8CD" stroke-width="4"/><path d="M43 376h374" fill="none" stroke="#C9D8CD" stroke-width="4"/></svg></div>
@@ -171,7 +171,7 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <figure class="photo wide"><img src="assets/photo-doorstep.jpg" alt="A bag of groceries with eggs, greens and oranges left on a doorstep" width="1200" height="800" loading="lazy"></figure></div>
 <figure class="video"><video controls playsinline preload="metadata" poster="assets/how-it-works-poster.jpg" width="1920" height="1080" aria-label="How Langar One works, a 60-second video"><source src="assets/how-it-works.mp4" type="video/mp4"><track kind="captions" src="assets/how-it-works.vtt" srclang="en" label="English"></video><figcaption>How Langar One works, in 60 seconds. Music: “Familiar Roads” by <a href="https://github.com/tannerhelland/free-music" rel="noopener">Tanner Helland</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.</figcaption></figure>
 {STEPS}
-<p><a class="more" href="how-it-works/">See how Langar One works and what families receive</a> · <a class="more" href="faq/">Read the FAQ</a></p>
+<p><a class="more" href="how-it-works/">See how Langar One works and what families receive</a> · <a class="more" href="faq/">Read the FAQ</a> · <a class="more" href="free-groceries/">Free groceries delivered</a> · <a class="more" href="seniors/">Free grocery delivery for seniors</a></p>
 </div></section>
 
 <section id="mission"><div class="wrap section">
@@ -225,7 +225,7 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 
 
 HOW = f'''<section class="page-hero"><div class="wrap"><h1>How Langar One Works</h1>
-<p>Bringing the grocery store directly to families in need — with dignity, choice, and community. Four steps from request to doorstep.</p></div></section>
+<p>Bringing the grocery store directly to families in need — with dignity, choice, and community. Inspired by langar, the Sikh tradition of feeding everyone, and delivered in four steps from request to doorstep.</p></div></section>
 <div class="wrap section">
 <figure class="video"><video controls playsinline preload="metadata" poster="../assets/how-it-works-poster.jpg" width="1920" height="1080" aria-label="How Langar One works, a 60-second video"><source src="../assets/how-it-works.mp4" type="video/mp4"><track kind="captions" src="../assets/how-it-works.vtt" srclang="en" label="English"></video><figcaption>How Langar One works, in 60 seconds. Music: “Familiar Roads” by <a href="https://github.com/tannerhelland/free-music" rel="noopener">Tanner Helland</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.</figcaption></figure>
 {STEPS}
@@ -304,7 +304,7 @@ else:
     GIVE = ""
     ONLINE = '<p class="muted">Online giving is opening soon. To give or sponsor a family now, email <a href="mailto:info@langar.one?subject=Donation%20to%20Langar%20One">info@langar.one</a> and we will help you directly.</p>'
 
-DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</h1>
+DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family's Groceries</h1>
 <p>Your gift puts real groceries on a family's doorstep. $170 feeds one family for a month — under $6 a day.</p></div></section>
 
 {GIVE}
@@ -381,13 +381,13 @@ FAQS = [
     ("How do I request groceries?", f'Fill out the <a href="{REQUEST_FORM}" target="_blank" rel="noopener">Langar One grocery delivery request form</a>. It should be completed by an adult on behalf of the household, and asks for your name, phone number, delivery address, the number of dependents in your household, and your reason for needing food assistance.'),
     ("What groceries will I receive?", "A basket of staple groceries — fresh produce, proteins, grains and bread, pantry staples, and dairy — selected around your household's dietary and cultural preferences. Specific items can't be guaranteed and may be substituted based on supply, so please check ingredient labels for allergens."),
     ("How long does support last?", "Approved families receive grocery deliveries for up to three months. If your situation hasn't improved, you can request a renewal, which is reviewed based on continued need and program capacity."),
-    ("Can an agency or caseworker request help for a client?", "Yes. Partner agencies can submit requests on behalf of the families they serve, connecting clients to food support without adding burden to them."),
-    ("Where does Langar One deliver?", "We have delivered groceries in 5 states so far — California, Texas, Georgia, Florida, and New York — and are expanding state by state, with the goal of serving families across the United States."),
+    ("Can an agency or caseworker request help for a client?", 'Yes. Partner agencies can submit requests on behalf of the families they serve, connecting clients to food support without adding burden to them. <a href="../partners/">See how referrals work</a>.'),
+    ("Where does Langar One deliver?", "We have delivered groceries in 5 states so far — California, Texas, Georgia, Florida, and New York — and are expanding state by state, with the goal of serving families across the United States. <a href=\"../locations/\">See where we deliver</a>."),
     ("What does \"Langar\" mean? Do I need to be Sikh to get help?", "Langar is a 500-year-old Sikh tradition of free community kitchens that serve meals to all people, embodying equality and service. Langar One brings that tradition to grocery delivery. Help is for everyone, regardless of background. <a href=\"../what-is-langar/\">Read more about langar</a>."),
     ("How is my personal information used?", 'We use your information only to run the program: to verify eligibility, coordinate and deliver your groceries, and contact you about your delivery. We do not sell, rent, or trade it. See our <a href="../privacy/">Privacy Policy</a> for details.'),
     ("How can I help?", 'You can <a href="../volunteer/">volunteer</a> to help with grocery deliveries, or <a href="../plan-event/">host a food drive, fundraiser, or awareness event</a>. You can also <a href="../donate/">sponsor a family</a>. Questions? Email <a href="mailto:info@langar.one">info@langar.one</a>.'),
 ]
-FAQ = ('<section class="page-hero"><div class="wrap"><h1>Frequently Asked Questions</h1>'
+FAQ = ('<section class="page-hero"><div class="wrap"><h1>Frequently Asked Questions About Langar One</h1>'
        '<p>How free grocery delivery from Langar One works, who qualifies, and how to get involved.</p></div></section>'
        '<div class="faq">' + "".join(f"<section><h2>{q}</h2><p>{a}</p></section>" for q, a in FAQS) + "</div>")
 FAQ_LD = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
@@ -406,7 +406,7 @@ def field(name, label, type_="text", required=False, placeholder="", auto=""):
     return f'<label>{label}{star}<input {attrs}></label>'
 
 
-VOLUNTEER = f'''<section class="page-hero"><div class="wrap"><h1>Volunteer With Us</h1>
+VOLUNTEER = f'''<section class="page-hero"><div class="wrap"><h1>Volunteer With Langar One</h1>
 <p>Join our community of volunteers making a real difference in the fight against hunger. Whether you can spare a few hours a week or a full day, your time matters.</p></div></section>
 <div class="wrap split">
 <div class="why"><figure class="photo full"><img src="../assets/photo-tote.jpg" alt="Fruit, vegetables and herbs spilling from a green reusable grocery bag" width="1200" height="800" loading="lazy"></figure><h2 class="h2s">Why Volunteer?</h2><div>
@@ -576,22 +576,22 @@ def main():
     page("", "Langar One | Free Grocery Delivery for Families in Need", DESC, HOME, home=True)
     page("how-it-works/", "How Free Grocery Delivery Works | Langar One",
          "How Langar One delivers free groceries to families in need: request help, eligibility review, doorstep delivery, and three months of renewable support.", HOW, crumb="How It Works")
-    page("partners/", "Partner With Langar One | Free Grocery Delivery for Your Clients",
+    page("partners/", "Partner With Langar One | Refer Clients for Free Groceries",
          "Agencies can refer clients to Langar One for free grocery delivery at no cost. See how referrals work, who we work with, and how to partner with us.", PARTNERS, crumb="Partners")
-    page("donate/", "Donate Groceries to Families in Need | Sponsor a Family | Langar One",
+    page("donate/", "Donate Groceries: Sponsor a Family in Need | Langar One",
          "Sponsor a family's groceries with Langar One. $170 feeds one family for a month, and monthly gifts start at $40. Give online or through your donor-advised fund.", DONATE, crumb="Donate")
-    page("founders/", "Our Founders | Langar One",
+    page("founders/", "Langar One Foundation Founders: Ricky S. Arora &amp; Ginni Jaspal",
          "Meet Ricky S. Arora and Ginni Jaspal, the co-founders of Langar One Foundation, a 501(c)(3) charity delivering free groceries to families in need.", FOUNDERS, crumb="Our Founders")
     page("what-is-langar/", "What Is Langar? The Sikh Free Community Kitchen | Langar One",
-         "Langar is the Sikh tradition of the free community kitchen, open to everyone. Learn what langar means, where it comes from, and how Langar One carries it forward.", LANGAR, crumb="What Is Langar?", extra=LANGAR_LD)
+         "Langar is the Sikh tradition of the free community kitchen, open to everyone. Learn what langar means, where it comes from, and how Langar One continues it.", LANGAR, crumb="What Is Langar?", extra=LANGAR_LD)
     page("faq/", "FAQ: Free Grocery Delivery for Families | Langar One",
          "Answers about Langar One's free grocery delivery: who qualifies, what it costs, what groceries you receive, how long support lasts, and how to help.", FAQ, crumb="FAQ", extra=FAQ_LD)
     page("volunteer/", "Volunteer With Langar One | Help Deliver Free Groceries",
          "Volunteer with Langar One to help deliver free groceries to families in need. Flexible shifts and direct impact in your community. Apply online.", VOLUNTEER, script=True, crumb="Volunteer")
     page("plan-event/", "Host a Food Drive or Fundraiser | Langar One",
          "Plan a food drive, fundraiser, or awareness event with Langar One and help fight hunger in your community. Send us your event proposal.", EVENT, script=True, crumb="Plan an Event")
-    page("terms/", "Terms &amp; Conditions - Langar One", "Terms and conditions for the Langar One free grocery delivery program.", TERMS, crumb="Terms &amp; Conditions")
-    page("privacy/", "Privacy Policy - Langar One", "How Langar One collects, uses and protects the information families share through its grocery delivery request form.", PRIVACY, crumb="Privacy Policy")
+    page("terms/", "Terms &amp; Conditions | Langar One", "Terms and conditions for the Langar One free grocery delivery program.", TERMS, crumb="Terms &amp; Conditions")
+    page("privacy/", "Privacy Policy | Langar One", "How Langar One collects, uses and protects the information families share through its grocery delivery request form.", PRIVACY, crumb="Privacy Policy")
     for p in extra_pages:
         faq = p.get("faq")
         ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [

@@ -42,7 +42,7 @@ def seo_pages(steps, form):
     pages.append(dict(
         path="free-groceries/", crumb="Free Groceries",
         title="Free Groceries Delivered to Your Home | Langar One",
-        desc="Get free groceries delivered to your door. Langar One is a charity that delivers free food to families facing food insecurity. No cost, ever. Request help online.",
+        desc="Get free groceries delivered to your door. Langar One is a charity that delivers free food to families facing food insecurity. Request help online.",
         faq=faq,
         body=hero("Free Groceries, Delivered to Your Home",
                   "Langar One delivers free groceries to families and individuals who are struggling to afford food. There is no cost for the food or the delivery.")
@@ -93,7 +93,7 @@ def seo_pages(steps, form):
     pages.append(dict(
         path="seniors/", crumb="For Seniors",
         title="Free Grocery Delivery for Seniors | Langar One",
-        desc="Free grocery delivery for seniors and older adults who can't easily shop for food. Request it yourself, or have a family member, caseworker, or meal program refer you.",
+        desc="Free grocery delivery for seniors who can't easily shop for food. Request it yourself, or have a family member, caseworker, or meal program refer you.",
         body=hero("Free Grocery Delivery for Seniors",
                   "For older adults who find it hard to get to the store, carry groceries home, or stretch a fixed income, Langar One delivers free groceries to the door.")
         + f'''<div class="wrap section">
@@ -128,7 +128,7 @@ def seo_pages(steps, form):
         path="locations/", crumb="Where We Deliver",
         title="Where We Deliver Free Groceries | Langar One",
         desc="See where Langar One delivers free groceries, including Los Angeles and San Francisco, and how to request help in your city.",
-        body=hero("Where We Deliver",
+        body=hero("Where Langar One Delivers Free Groceries",
                   "Langar One has delivered free groceries in five states and is expanding state by state. These are the cities we deliver to today.")
         + f'''<div class="wrap section">
 <div class="head"><p class="eyebrow">Cities we deliver to today</p><h2 class="h2">Free grocery delivery in your city</h2></div>
@@ -167,7 +167,7 @@ def seo_pages(steps, form):
         path="corporate-giving/", crumb="Corporate Giving",
         title="Corporate Giving: Sponsor Families' Groceries | Langar One",
         desc="Companies can sponsor groceries for families in need, match employee donations, and host workplace food drives with Langar One, a 501(c)(3) charity.",
-        body=hero("Corporate Giving",
+        body=hero("Corporate Giving: Sponsor Families' Groceries",
                   "Your company can put groceries on families' doorsteps: sponsor families, match employee gifts, or host a workplace drive.")
         + f'''<div class="wrap section">
 <div class="head"><p class="eyebrow">Ways companies give</p><h2 class="h2">Simple, tangible, and easy to explain to your team</h2>
