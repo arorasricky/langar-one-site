@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """Builds the Langar One static site into ../docs. Run: python3 build.py"""
-import datetime, json, os, pathlib, re, shutil
+import datetime, json, os, pathlib, re, shutil, sys
+
+sys.path.insert(0, str(pathlib.Path(__file__).parent))
+from pages_seo import seo_pages
 
 SRC = pathlib.Path(__file__).parent
 PREVIEW = bool(os.environ.get("PREVIEW"))
@@ -51,7 +54,8 @@ def footer(root):
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
 <p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">Langar One Foundation<br>A 501(c)(3) charity · EIN 41-3146886<br><a href="{CANDID_URL}" target="_blank" rel="noopener">View our Candid profile</a></p></div>
 <nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}what-is-langar/">What Is Langar?</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a></nav>
-<nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a></nav>
+<nav class="foot-col" aria-label="Get help"><strong>Get Help</strong><a href="{REQUEST_FORM}" target="_blank" rel="noopener">Request Help</a><a href="{root}free-groceries/">Free Groceries</a><a href="{root}seniors/">For Seniors</a><a href="{root}food-pantry-alternative/">Food Pantry Alternative</a><a href="{root}locations/">Where We Deliver</a></nav>
+<nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a><a href="{root}corporate-giving/">Corporate Giving</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
 </div>
 <div class="foot-base"><span>© 2026 Langar One. All rights reserved.</span>
@@ -60,15 +64,17 @@ def footer(root):
 </div></footer>'''
 
 
-def page(path, title, desc, body, home=False, script=False, crumb=None, extra=None):
-    root = "./" if path == "" else ("/" if path == "404" else "../")
+def page(path, title, desc, body, home=False, script=False, crumb=None, extra=None, parent=None):
+    root = "./" if path == "" else ("/" if path == "404" else "../" * len(path.strip("/").split("/")))
+    body = body.replace("{R}", root)
     canonical = f"{SITE}/{path}"
     noindex = path == "404"
     data = [ORG, WEBSITE] if home else []
     if crumb:
         data.append({"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"},
-            {"@type": "ListItem", "position": 2, "name": crumb.replace("&amp;", "&"), "item": canonical}]})
+            {"@type": "ListItem", "position": 1, "name": "Home", "item": f"{SITE}/"}]
+            + ([{"@type": "ListItem", "position": 2, "name": parent[0], "item": f"{SITE}/{parent[1]}"}] if parent else [])
+            + [{"@type": "ListItem", "position": 3 if parent else 2, "name": crumb.replace("&amp;", "&"), "item": canonical}]})
     if extra:
         data.append(extra)
     jsonld = "".join(f'<script type="application/ld+json">{json.dumps(d, ensure_ascii=False)}</script>\n' for d in data)
@@ -277,6 +283,7 @@ PARTNERS = f'''<section class="page-hero"><div class="wrap"><h1>Partner With Lan
 </div></section>
 
 <div class="wrap section" style="gap:20px">
+<div class="card"><h2 class="h3">For senior meal programs</h2><p class="muted">If your home-delivered meal program has a waiting list, Langar One can be a no-cost grocery bridge for the older adults waiting on it. We deliver groceries to their homes while they wait, and alongside your meals once they are enrolled. <a href="../seniors/">Free grocery delivery for seniors</a>.</p></div>
 <div class="cta"><div><h2 class="h2s">Have a client who needs groceries?</h2><p>Referrals are reviewed for eligibility and accepted as program capacity allows.</p></div>
 <a class="btn btn-lg" href="{REQUEST_FORM}" target="_blank" rel="noopener">Refer a Client</a></div>
 <div class="card"><h2 class="h3">Want to set up a partnership?</h2><p class="muted">Tell us about your organization and the people you serve. Email <a href="mailto:info@langar.one">info@langar.one</a> and we'll be in touch.</p></div>
@@ -328,6 +335,7 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family</
 <div class="wrap section" style="gap:20px">
 <div class="cta"><div><h2 class="h2s">Questions about giving?</h2><p>We're glad to talk through sponsorships, donor-advised fund grants, or company giving.</p></div>
 <a class="btn btn-lg" href="mailto:info@langar.one?subject=Giving%20to%20Langar%20One">Email Us</a></div>
+<p class="muted">Giving on behalf of a company? See <a href="../corporate-giving/">corporate giving</a>.</p>
 </div>'''
 
 FOUNDERS = '''<section class="page-hero"><div class="wrap"><h1>Our Founders</h1>
@@ -529,6 +537,11 @@ Founded in 2021 and based in the San Francisco Bay Area. Approved families recei
 - [Volunteer]({SITE}/volunteer/): ways to help and the volunteer application
 - [Plan an Event]({SITE}/plan-event/): host a food drive, fundraiser, or awareness event
 - [Our Founders]({SITE}/founders/): who started Langar One and why
+- [Free Groceries]({SITE}/free-groceries/): how to get free groceries delivered to your home
+- [For Seniors]({SITE}/seniors/): free grocery delivery for older adults
+- [Food Pantry Alternative]({SITE}/food-pantry-alternative/): for people who cannot get to a food pantry
+- [Where We Deliver]({SITE}/locations/): states and cities served, including Santa Monica, Los Angeles, and San Francisco
+- [Corporate Giving]({SITE}/corporate-giving/): how companies sponsor families and match employee gifts
 - [Privacy Policy]({SITE}/privacy/)
 - [Terms & Conditions]({SITE}/terms/)
 
@@ -556,7 +569,8 @@ def main():
     if not PREVIEW:
         (DIST / "CNAME").write_text("www.langar.one\n")  # GitHub Pages custom domain
     (DIST / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {SITE}/sitemap.xml\n")
-    paths = ["", "what-is-langar/", "how-it-works/", "partners/", "donate/", "founders/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"]
+    extra_pages = seo_pages(STEPS, REQUEST_FORM)
+    paths = ["", "what-is-langar/", "how-it-works/", "partners/", "donate/", "founders/", "faq/", "volunteer/", "plan-event/", "terms/", "privacy/"] + [p["path"] for p in extra_pages]
     (DIST / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
         + "".join(f"<url><loc>{SITE}/{p}</loc><lastmod>{datetime.date.today().isoformat()}</lastmod></url>\n" for p in paths) + "</urlset>\n")
     page("", "Langar One | Free Grocery Delivery for Families in Need", DESC, HOME, home=True)
@@ -564,7 +578,7 @@ def main():
          "How Langar One delivers free groceries to families in need: request help, eligibility review, doorstep delivery, and three months of renewable support.", HOW, crumb="How It Works")
     page("partners/", "Partner With Langar One | Free Grocery Delivery for Your Clients",
          "Agencies can refer clients to Langar One for free grocery delivery at no cost. See how referrals work, who we work with, and how to partner with us.", PARTNERS, crumb="Partners")
-    page("donate/", "Donate | Sponsor a Family's Groceries | Langar One",
+    page("donate/", "Donate Groceries to Families in Need | Sponsor a Family | Langar One",
          "Sponsor a family's groceries with Langar One. $170 feeds one family for a month, and monthly gifts start at $40. Give online or through your donor-advised fund.", DONATE, crumb="Donate")
     page("founders/", "Our Founders | Langar One",
          "Meet Ricky S. Arora and Ginni Jaspal, the co-founders of Langar One Foundation, a 501(c)(3) charity delivering free groceries to families in need.", FOUNDERS, crumb="Our Founders")
@@ -578,6 +592,11 @@ def main():
          "Plan a food drive, fundraiser, or awareness event with Langar One and help fight hunger in your community. Send us your event proposal.", EVENT, script=True, crumb="Plan an Event")
     page("terms/", "Terms &amp; Conditions - Langar One", "Terms and conditions for the Langar One free grocery delivery program.", TERMS, crumb="Terms &amp; Conditions")
     page("privacy/", "Privacy Policy - Langar One", "How Langar One collects, uses and protects the information families share through its grocery delivery request form.", PRIVACY, crumb="Privacy Policy")
+    for p in extra_pages:
+        faq = p.get("faq")
+        ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in faq]} if faq else None
+        page(p["path"], p["title"], p["desc"], p["body"], crumb=p["crumb"], extra=ld, parent=p.get("parent"))
     page("404", "Page not found - Langar One", "Page not found.", NOTFOUND)
     print("built", sorted(str(p.relative_to(DIST)) for p in DIST.rglob("*") if p.is_file()))
 
