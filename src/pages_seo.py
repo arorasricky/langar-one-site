@@ -118,8 +118,6 @@ def seo_pages(steps, form):
 
     # ---- Locations hub + city pages
     cities = [
-        ("santa-monica", "Santa Monica", "Santa Monica and nearby Westside neighborhoods, including Venice and Marina del Rey",
-         "Santa Monica is where many of the families we serve live, most of them referred by local agencies."),
         ("los-angeles", "Los Angeles", "Los Angeles, including Hollywood, Venice, and Marina del Rey",
          "We deliver to homes across the Los Angeles area, and work with local agencies that refer the people they serve."),
         ("san-francisco", "San Francisco", "San Francisco",
@@ -129,11 +127,11 @@ def seo_pages(steps, form):
     pages.append(dict(
         path="locations/", crumb="Where We Deliver",
         title="Where We Deliver Free Groceries | Langar One",
-        desc="See where Langar One delivers free groceries, including Santa Monica, Los Angeles, and San Francisco, and how to request help in your city.",
+        desc="See where Langar One delivers free groceries, including Los Angeles and San Francisco, and how to request help in your city.",
         body=hero("Where We Deliver",
-                  "Langar One has delivered free groceries in five states: California, Texas, Georgia, Florida, and New York. Most of our current deliveries are in California.")
+                  "Langar One has delivered free groceries in five states and is expanding state by state. These are the cities we deliver to today.")
         + f'''<div class="wrap section">
-<div class="head"><p class="eyebrow">Cities we deliver to today</p><h2 class="h2">Free grocery delivery in California</h2></div>
+<div class="head"><p class="eyebrow">Cities we deliver to today</p><h2 class="h2">Free grocery delivery in your city</h2></div>
 <div class="grid g3">{links}</div>
 <div class="head"><h2 class="h2s">Do not see your city?</h2>
 <p class="muted">Send a request anyway. We are expanding state by state, and requests tell us where the need is. We review every request, and how many families we can accept depends on the donations we receive.</p></div>

@@ -540,7 +540,7 @@ Founded in 2021 and based in the San Francisco Bay Area. Approved families recei
 - [Free Groceries]({SITE}/free-groceries/): how to get free groceries delivered to your home
 - [For Seniors]({SITE}/seniors/): free grocery delivery for older adults
 - [Food Pantry Alternative]({SITE}/food-pantry-alternative/): for people who cannot get to a food pantry
-- [Where We Deliver]({SITE}/locations/): states and cities served, including Santa Monica, Los Angeles, and San Francisco
+- [Where We Deliver]({SITE}/locations/): cities served, including Los Angeles and San Francisco
 - [Corporate Giving]({SITE}/corporate-giving/): how companies sponsor families and match employee gifts
 - [Privacy Policy]({SITE}/privacy/)
 - [Terms & Conditions]({SITE}/terms/)
