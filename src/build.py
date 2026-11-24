@@ -422,7 +422,9 @@ VOLUNTEER = f'''<section class="page-hero"><div class="wrap"><h1>Volunteer With 
 {field("email", "Email", "email", True, auto="email")}
 {field("phone", "Phone Number", "tel", auto="tel")}
 {field("cityState", "City/State", placeholder="e.g., San Francisco, CA")}
+<input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 <button class="btn btn-gold" type="submit">Submit Application</button>
+<p class="form-note muted">Your details are emailed to the Langar One team and used only to contact you about volunteering.</p>
 <p class="form-msg" role="status" tabindex="-1" hidden></p>
 </form></div>
 <section class="white"><div class="wrap section">
