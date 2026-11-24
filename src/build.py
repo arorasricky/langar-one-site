@@ -55,7 +55,7 @@ def footer(root):
 <div class="foot-brand"><a class="brand" href="{root}">{mark(34)}<span class="brand-name">Langar <b>One</b></span></a>
 <p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">Langar One Foundation<br>A 501(c)(3) charity · EIN 41-3146886<br><a href="{CANDID_URL}" target="_blank" rel="noopener">View our Candid profile</a></p></div>
 <nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}what-is-langar/">What Is Langar?</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a><a href="{root}stories/">Stories</a></nav>
-<nav class="foot-col" aria-label="Get help"><strong>Get Help</strong><a href="{REQUEST_FORM}" target="_blank" rel="noopener">Request Help</a><a href="{root}free-groceries/">Free Groceries</a><a href="{root}seniors/">For Seniors</a><a href="{root}food-pantry-alternative/">Food Pantry Alternative</a><a href="{root}locations/">Where We Deliver</a></nav>
+<nav class="foot-col" aria-label="Get help"><strong>Get Help</strong><a href="{REQUEST_FORM}" target="_blank" rel="noopener">Request Help</a><a href="{root}free-groceries/">Free Groceries</a><a href="{root}seniors/">For Seniors</a><a href="{root}food-pantry-alternative/">Food Pantry Delivery</a><a href="{root}locations/">Where We Deliver</a></nav>
 <nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a><a href="{root}corporate-giving/">Corporate Giving</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
 </div>
@@ -172,7 +172,7 @@ HOME = f'''<section class="hero" id="top"><div class="wrap">
 <figure class="photo wide"><img src="assets/photo-doorstep.jpg" alt="A bag of groceries with eggs, greens and oranges left on a doorstep" width="1200" height="800" loading="lazy"></figure></div>
 <figure class="video"><video controls playsinline preload="metadata" poster="assets/how-it-works-poster.jpg" width="1920" height="1080" aria-label="How Langar One works, a 60-second video"><source src="assets/how-it-works.mp4" type="video/mp4"><track kind="captions" src="assets/how-it-works.vtt" srclang="en" label="English"></video><figcaption>How Langar One works, in 60 seconds. Music: “Familiar Roads” by <a href="https://github.com/tannerhelland/free-music" rel="noopener">Tanner Helland</a>, <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener">CC BY 4.0</a>.</figcaption></figure>
 {STEPS}
-<p><a class="more" href="how-it-works/">See how Langar One works and what families receive</a> · <a class="more" href="faq/">Read the FAQ</a> · <a class="more" href="free-groceries/">Free groceries delivered</a> · <a class="more" href="seniors/">Free grocery delivery for seniors</a></p>
+<p><a class="more" href="how-it-works/">See how Langar One works and what families receive</a> · <a class="more" href="faq/">Read the FAQ</a> · <a class="more" href="free-groceries/">Free groceries delivered</a> · <a class="more" href="seniors/">Free grocery delivery for seniors</a> · <a class="more" href="food-pantry-alternative/">Food pantry delivery</a></p>
 </div></section>
 
 <section id="mission"><div class="wrap section">
@@ -383,6 +383,7 @@ FAQS = [
     ("What groceries will I receive?", "A basket of staple groceries — fresh produce, proteins, grains and bread, pantry staples, and dairy — selected around your household's dietary and cultural preferences. Specific items can't be guaranteed and may be substituted based on supply, so please check ingredient labels for allergens."),
     ("How long does support last?", "Approved families receive grocery deliveries for up to three months. If your situation hasn't improved, you can request a renewal, which is reviewed based on continued need and program capacity."),
     ("Can an agency or caseworker request help for a client?", 'Yes. Partner agencies can submit requests on behalf of the families they serve, connecting clients to food support without adding burden to them. <a href="../partners/">See how referrals work</a>.'),
+    ("Is Langar One a food pantry that delivers?", 'Langar One is not a food pantry, but we do deliver. We bring free groceries to the homes of families who cannot easily get to a pantry. <a href="../food-pantry-alternative/">Read about food pantry delivery</a>.'),
     ("Where does Langar One deliver?", "We have delivered groceries in 5 states so far — California, Texas, Georgia, Florida, and New York — and are expanding state by state, with the goal of serving families across the United States. <a href=\"../locations/\">See where we deliver</a>."),
     ("What does \"Langar\" mean? Do I need to be Sikh to get help?", "Langar is a 500-year-old Sikh tradition of free community kitchens that serve meals to all people, embodying equality and service. Langar One brings that tradition to grocery delivery. Help is for everyone, regardless of background. <a href=\"../what-is-langar/\">Read more about langar</a>."),
     ("How is my personal information used?", 'We use your information only to run the program: to verify eligibility, coordinate and deliver your groceries, and contact you about your delivery. We do not sell, rent, or trade it. See our <a href="../privacy/">Privacy Policy</a> for details.'),
@@ -540,7 +541,7 @@ Founded in 2021 and based in the San Francisco Bay Area. Approved families recei
 - [Our Founders]({SITE}/founders/): who started Langar One and why
 - [Free Groceries]({SITE}/free-groceries/): how to get free groceries delivered to your home
 - [For Seniors]({SITE}/seniors/): free grocery delivery for older adults
-- [Food Pantry Alternative]({SITE}/food-pantry-alternative/): for people who cannot get to a food pantry
+- [Food Pantry Delivery]({SITE}/food-pantry-alternative/): free grocery delivery for people who cannot get to a food pantry
 - [Where We Deliver]({SITE}/locations/): cities served, including Los Angeles and San Francisco
 - [Corporate Giving]({SITE}/corporate-giving/): how companies sponsor families and match employee gifts
 - [Stories & Updates]({SITE}/stories/): articles on langar, getting free groceries delivered, and helping older adults find food

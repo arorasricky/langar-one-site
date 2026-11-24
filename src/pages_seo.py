@@ -57,21 +57,31 @@ def seo_pages(steps, form):
 </div></section>
 <div class="wrap section" style="gap:20px">
 <div class="head"><h2 class="h2s">Who can get free groceries</h2>
-<p class="muted">Langar One serves families and individuals in the United States who are facing food insecurity. You do not need to belong to any faith or community. We review every request, and how many families we can accept depends on the donations we receive. <a href="{{R}}faq/">Read the FAQ</a> or see <a href="{{R}}locations/">where we deliver</a>.</p></div>
+<p class="muted">Langar One serves families and individuals in the United States who are facing food insecurity. You do not need to belong to any faith or community. We review every request, and how many families we can accept depends on the donations we receive. <a href="{{R}}faq/">Read the FAQ</a> or see <a href="{{R}}locations/">where we deliver</a>. Looking for a <a href="{{R}}food-pantry-alternative/">food pantry that delivers</a>? This is how our delivery works.</p></div>
 {request_cta(form)}
 {NEED_NOW}
 </div>
 ''' + qa_block(faq)))
 
-    # ---- Food pantry alternative
+    # ---- Food pantry delivery (kept at the /food-pantry-alternative/ address)
+    faq = [
+        ("Is there a food pantry that delivers to my home?", "Some food pantries and food banks run home delivery programs, and whether one covers your address depends on where you live. Call or text 211 to ask about food pantry delivery near you. Langar One is not a food pantry, but we deliver free groceries to the homes of families who cannot get to one."),
+        ("How do I get food pantry delivery if I can't drive?", "Ask your local food pantry or 211 whether a delivery program serves your address. You can also send Langar One a request online. A family member, neighbor, caseworker, or meal program can fill out the request for you."),
+        ("Is the delivery free?", "Yes. With Langar One, families pay $0 for the groceries and $0 for delivery. Langar One is a 501(c)(3) charity funded by donations."),
+        ("How soon will groceries be delivered?", "Not the same day. Langar One reviews every request and confirms eligibility before deliveries begin, and approval depends on program capacity. If you need food today, call or text 211 or contact your local food bank."),
+        ("How long do deliveries last?", "Approved families receive grocery deliveries for three months. If your situation has not improved, you can ask to renew."),
+        ("Who can get groceries delivered by Langar One?", "Families and individuals in the United States who are facing food insecurity, especially people who cannot easily get to a food pantry because of age, disability, illness, childcare, or transportation. You do not need to belong to any faith or community."),
+    ]
     pages.append(dict(
-        path="food-pantry-alternative/", crumb="Food Pantry Alternative",
-        title="Can't Get to a Food Pantry? Free Grocery Delivery | Langar One",
-        desc="Langar One is not a food pantry. We deliver free groceries to your door for people who can't travel to a food pantry, carry bags home, or wait in line.",
-        body=hero("Can't Get to a Food Pantry? We Deliver.",
-                  "Langar One is not a food pantry. We are a charity that delivers free groceries to your door, for people who cannot easily travel, carry bags home, or wait in line.")
+        path="food-pantry-alternative/", crumb="Food Pantry Delivery",
+        title="Food Pantry That Delivers? Free Grocery Delivery | Langar One",
+        desc="Looking for a food pantry that delivers? Langar One is a charity that brings free groceries to your door if you can't get to a food pantry. Request online.",
+        faq=faq,
+        body=hero("Looking for a Food Pantry That Delivers?",
+                  "Langar One is not a food pantry, but we do what you are looking for. We are a charity that delivers free groceries to your door, for people who cannot easily travel, carry bags home, or wait in line.")
         + f'''<div class="wrap section">
-<div class="head"><p class="eyebrow">How we are different from a food pantry</p><h2 class="h2">The groceries come to you</h2></div>
+<div class="head"><p class="eyebrow">Food pantry delivery, without the trip</p><h2 class="h2">The groceries come to you</h2>
+<p class="lead">Most food pantries ask you to come to them at a set place and time. If getting there is the hard part, home delivery is what you need.</p></div>
 <div class="grid g3">
 <div class="rule"><h3>Delivered to your door</h3><p class="muted">There is nowhere to drive to and no line to stand in. Groceries arrive at your home.</p></div>
 <div class="rule"><h3>Chosen around your household</h3><p class="muted">Fresh produce, proteins, grains, pantry staples, and dairy, selected around your dietary and cultural preferences.</p></div>
@@ -79,14 +89,31 @@ def seo_pages(steps, form):
 </div>
 </div>
 <section class="white"><div class="wrap section">
+<div class="head"><p class="eyebrow">How to get groceries delivered</p><h2 class="h2">Four steps from request to doorstep</h2>
+<p class="lead">You can request delivery yourself, or a family member, caseworker, or meal program can <a href="{{R}}partners/">refer you</a>.</p></div>
+{steps}
+</div></section>
+<div class="wrap section">
+<div class="head"><h2 class="h2">Who food pantry delivery helps most</h2>
+<p class="lead">Delivery is for people who qualify for food help but cannot easily collect it.</p></div>
+<div class="grid g3">
+<div class="rule"><h3>Older adults</h3><p class="muted">People who no longer drive, or who cannot carry bags of groceries home. See <a href="{{R}}seniors/">free grocery delivery for seniors</a>.</p></div>
+<div class="rule"><h3>People with a disability or illness</h3><p class="muted">Anyone for whom travelling to a pantry and waiting in line is not realistic.</p></div>
+<div class="rule"><h3>Families without a car or childcare</h3><p class="muted">Parents who cannot get to a pantry during its opening hours.</p></div>
+</div>
+</div>
+<section class="white"><div class="wrap section">
 <div class="head"><h2 class="h2">Food pantries and Langar One work together</h2>
 <p class="lead">A food pantry or food bank can often help the same day. Langar One takes a little longer to start, then brings regular groceries to your home.</p>
-<p class="muted">If you can get to a pantry, use it. If getting there is the hard part, because of age, disability, illness, childcare, or transportation, ask us for delivery. A caseworker or family member can also <a href="{{R}}partners/">refer you</a>.</p></div>
+<p class="muted">If you can get to a pantry, use it. Some food banks also run their own home delivery, so it is worth asking 211 what is available where you live. If getting there is the hard part, because of age, disability, illness, childcare, or transportation, ask us for delivery.</p></div>
 </div></section>
 <div class="wrap section" style="gap:20px">
 {request_cta(form, "Ask for free grocery delivery")}
 {NEED_NOW}
-<p class="muted"><a href="{{R}}how-it-works/">See how Langar One works</a> · <a href="{{R}}free-groceries/">Free groceries delivered</a> · <a href="{{R}}seniors/">Free grocery delivery for seniors</a></p>
+<div class="head"><h2 class="h2s">Questions about food pantry delivery</h2></div>
+</div>
+''' + qa_block(faq) + f'''<div class="wrap section" style="gap:20px">
+<p class="muted"><a href="{{R}}how-it-works/">See how Langar One works</a> · <a href="{{R}}free-groceries/">Free groceries delivered</a> · <a href="{{R}}seniors/">Free grocery delivery for seniors</a> · <a href="{{R}}locations/">Where we deliver</a></p>
 </div>'''))
 
     # ---- Seniors
@@ -109,7 +136,7 @@ def seo_pages(steps, form):
 <div class="head"><p class="eyebrow">What you receive</p><h2 class="h2">Groceries that fit how you cook and eat</h2></div>
 {RECEIVE}
 <div class="head"><h2 class="h2s">Works alongside home-delivered meals</h2>
-<p class="muted">Langar One does not replace a meal program. Groceries at home add to the meals you may already receive, and can help while you are on a waiting list. Deliveries are free, and you pay nothing for the food.</p></div>
+<p class="muted">Langar One does not replace a meal program. Groceries at home add to the meals you may already receive, and can help while you are on a waiting list. Deliveries are free, and you pay nothing for the food. If you cannot get to a pantry, read about <a href="{{R}}food-pantry-alternative/">food pantry delivery</a>.</p></div>
 </div></section>
 <div class="wrap section" style="gap:20px">
 {request_cta(form, "Request free groceries for yourself or a senior you care for")}
@@ -159,7 +186,7 @@ def seo_pages(steps, form):
 <div class="wrap section" style="gap:20px">
 {request_cta(form, f"Request free groceries in {name}")}
 {NEED_NOW}
-<p class="muted"><a href="{{R}}locations/">All locations</a> · <a href="{{R}}seniors/">Free grocery delivery for seniors</a> · <a href="{{R}}food-pantry-alternative/">Can't get to a food pantry?</a></p>
+<p class="muted"><a href="{{R}}locations/">All locations</a> · <a href="{{R}}seniors/">Free grocery delivery for seniors</a> · <a href="{{R}}food-pantry-alternative/">Food pantry delivery</a></p>
 </div>'''))
 
     # ---- Corporate giving
