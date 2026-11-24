@@ -26,6 +26,7 @@ document.querySelectorAll("form[data-form]").forEach(function (form) {
   var cfg = LANGAR_FORMS[form.dataset.form];
   var msg = form.querySelector(".form-msg");
   var button = form.querySelector("button[type=submit]");
+  var label = button.textContent;
 
   function show(text) {
     msg.textContent = text;
@@ -64,10 +65,14 @@ document.querySelectorAll("form[data-form]").forEach(function (form) {
       });
       var failed = "We couldn't send the form just now. Please email us at " + LANGAR_EMAIL + " and we'll get back to you.";
       button.disabled = true;
+      button.textContent = "Sending...";
+      var ctl = window.AbortController ? new AbortController() : null;
+      var timer = setTimeout(function () { if (ctl) ctl.abort(); }, 15000);
       fetch("https://formsubmit.co/ajax/" + cfg.emailTo, {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: ctl ? ctl.signal : undefined
       })
         .then(function (r) { return r.json(); })
         .then(function (res) {
@@ -79,7 +84,7 @@ document.querySelectorAll("form[data-form]").forEach(function (form) {
           }
         })
         .catch(function () { show(failed); })
-        .then(function () { button.disabled = false; });
+        .then(function () { clearTimeout(timer); button.disabled = false; button.textContent = label; });
       return;
     }
 
