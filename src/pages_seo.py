@@ -338,7 +338,7 @@ def seo_pages(steps, form):
     # ---- Corporate giving
     corp_faq = [
         ("How can a company support Langar One?", "Companies sponsor families' groceries with a company gift, match employee donations, or host a workplace fundraiser. It costs about $170 to deliver groceries to one family for a month."),
-        ("Is Langar One eligible for corporate matching gifts?", "Langar One Foundation is a 501(c)(3) public charity, EIN 41-3146886, which is what most matching-gift programs require. Check your company's program for its own rules."),
+        ("Is Langar One eligible for corporate matching gifts?", "Langar One Foundation is a 501(c)(3) public charity, EIN 41-3146886, which is what most matching-gift programs require. We are listed on Blackbaud YourCause, so employees at companies that use it can find us in their giving portal. Check your company's program for its own rules."),
         ("Can we give through our company foundation or donor-advised fund?", "Yes. Grants from company foundations and donor-advised funds are welcome. Use our legal name, Langar One Foundation, and EIN 41-3146886."),
         ("Will we get a report on what our gift did?", "Yes. Email info@langar.one and we will tell you how many families your gift fed and for how long."),
     ]
@@ -354,7 +354,7 @@ def seo_pages(steps, form):
 <p class="lead">It costs about $170 to deliver groceries to one family for a month, so every gift maps to families fed.</p></div>
 <div class="grid g3">
 <div class="rule"><h3>Sponsor families</h3><p class="muted">$170 a month sponsors one family. $1,700 a month sponsors ten. A one-time gift of $510 covers one family for a full three-month cycle.</p></div>
-<div class="rule"><h3>Match employee gifts</h3><p class="muted">Add Langar One Foundation to your matching-gift program so employee donations go twice as far. Employees can <a href="{{R}}donate/">give online</a> and submit their receipt for a match.</p></div>
+<div class="rule"><h3>Match employee gifts</h3><p class="muted">Add Langar One Foundation to your matching-gift program so employee donations go twice as far. Employees can <a href="{{R}}donate/">give online</a> and submit their receipt for a match, or give through <a href="https://host.nxt.blackbaud.com/npp/nonprofits/nonprofit-public-profile/16480622?svcid=bbvn" target="_blank" rel="noopener">Blackbaud YourCause</a> where their company uses it.</p></div>
 <div class="rule"><h3>Host a workplace drive</h3><p class="muted">Run a fundraiser or awareness event with your team. <a href="{{R}}plan-event/">Plan an event</a> and we will help you set it up.</p></div>
 </div>
 </div>
@@ -363,7 +363,7 @@ def seo_pages(steps, form):
 <p class="lead">Most corporate giving programs combine company gifts, employee giving, and volunteering. We can be part of each.</p></div>
 <div class="grid g3">
 <div class="rule"><h3>Company gifts and sponsorships</h3><p class="muted">A gift with a clear unit of impact: $170 feeds one family for a month, which is easy to report to leadership and staff.</p></div>
-<div class="rule"><h3>Employee giving and matching gifts</h3><p class="muted">Employees give through payroll or workplace giving platforms, and your match doubles it. Langar One is applying to the major platforms; tell us which one you use.</p></div>
+<div class="rule"><h3>Employee giving and matching gifts</h3><p class="muted">Employees give through payroll or workplace giving platforms, and your match doubles it. Langar One Foundation is listed on <a href="https://host.nxt.blackbaud.com/npp/nonprofits/nonprofit-public-profile/16480622?svcid=bbvn" target="_blank" rel="noopener">Blackbaud YourCause</a> and is eligible for giving through the Blackbaud Giving Fund. Tell us if your company uses a different platform.</p></div>
 <div class="rule"><h3>Team volunteering</h3><p class="muted">Remote and skills-based roles suit distributed teams. <a href="{{R}}volunteer/">See volunteer options</a>.</p></div>
 </div>
 </div>
