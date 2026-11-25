@@ -324,7 +324,7 @@ def seo_pages(steps, form):
 <div class="rule"><h3>$2,040</h3><p class="muted">One family's groceries for a full year.</p></div>
 <div class="rule"><h3>$20,400</h3><p class="muted">Ten families' groceries for a full year.</p></div>
 </div>
-<p class="muted">Langar One has made more than 2,000 grocery deliveries in five states since 2021. <a href="{{R}}founders/">Meet our founders</a>, see <a href="{{R}}how-it-works/">how the program works</a>, or view our nonprofit profile on <a href="https://app.candid.org/profile/16525490/langar-one-foundation-41-3146886" target="_blank" rel="noopener">Candid</a>.</p>
+<p class="muted">Langar One has made more than 2,000 grocery deliveries in five states since 2021. <a href="{{R}}founders/">Meet our founders</a>, see <a href="{{R}}how-it-works/">how the program works</a>, or view our nonprofit profile on <a href="https://app.candid.org/profile/16525490/langar-one-foundation-41-3146886" target="_blank" rel="noopener">Candid</a>, where we hold a Seal of Transparency.</p>
 </div>
 <div class="wrap section" style="gap:20px">
 <div class="cta"><div><h2 class="h2s">Talk to us about a grant</h2><p>We are glad to answer questions from donors, advisors, and foundation staff.</p></div>
