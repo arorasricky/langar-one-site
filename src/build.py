@@ -56,7 +56,7 @@ def footer(root):
 <p>Ending hunger, one delivery at a time.</p><p style="font-size:15px">Langar One Foundation<br>A 501(c)(3) charity · EIN 41-3146886<br><a href="{CANDID_URL}" target="_blank" rel="noopener">View our Candid profile</a></p></div>
 <nav class="foot-col" aria-label="About"><strong>About</strong><a href="{root}#mission">Our Mission</a><a href="{root}#impact">Our Impact</a><a href="{root}#origin">Our Story</a><a href="{root}what-is-langar/">What Is Langar?</a><a href="{root}founders/">Our Founders</a><a href="{root}how-it-works/">How It Works</a><a href="{root}faq/">FAQ</a><a href="{root}stories/">Stories</a></nav>
 <nav class="foot-col" aria-label="Get help"><strong>Get Help</strong><a href="{REQUEST_FORM}" target="_blank" rel="noopener">Request Help</a><a href="{root}free-groceries/">Free Groceries</a><a href="{root}seniors/">For Seniors</a><a href="{root}food-pantry-alternative/">Food Pantry Delivery</a><a href="{root}locations/">Where We Deliver</a></nav>
-<nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a><a href="{root}corporate-giving/">Corporate Giving</a></nav>
+<nav class="foot-col" aria-label="Get involved"><strong>Get Involved</strong><a href="{root}volunteer/">Volunteer</a><a href="{root}donate/">Donate</a><a href="{root}sponsor-a-family/">Sponsor a Family</a><a href="{root}plan-event/">Host an Event</a><a href="{root}partners/">Partner With Us</a><a href="{root}corporate-giving/">Corporate Giving</a></nav>
 <div class="foot-col"><strong>Contact</strong><a href="mailto:info@langar.one">info@langar.one</a><address>46539 Mission Blvd #1021<br>Fremont, CA 94539<br>United States</address></div>
 </div>
 <div class="foot-base"><span>© 2026 Langar One. All rights reserved.</span>
@@ -327,7 +327,7 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family's
 <div class="grid g3">
 <div class="rule"><h3>Give online</h3>{ONLINE}</div>
 <div class="rule"><h3>Become a monthly sponsor</h3><p class="muted">Monthly gifts start at $40, which covers about a week of groceries. A gift of $170 a month keeps groceries arriving for one family, month after month. Sponsor one family or several.</p></div>
-<div class="rule"><h3>Give through your donor-advised fund</h3><p class="muted">Recommend a grant to Langar One from your donor-advised fund.</p>
+<div class="rule"><h3>Give through your donor-advised fund</h3><p class="muted">Recommend a grant to Langar One from your donor-advised fund. <a href="../donor-advised-fund/">How DAF giving works</a>.</p>
 <p class="muted"><strong>Organization:</strong> Langar One Foundation<br><strong>EIN:</strong> 41-3146886<br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539</p></div>
 </div>
 <p class="muted">Langar One Foundation is a 501(c)(3) charity, EIN 41-3146886. Donations are tax-deductible to the extent allowed by law. <a href="{CANDID_URL}" target="_blank" rel="noopener">View our nonprofit profile on Candid</a>.</p>
@@ -336,7 +336,7 @@ DONATE = f'''<section class="page-hero"><div class="wrap"><h1>Sponsor a Family's
 <div class="wrap section" style="gap:20px">
 <div class="cta"><div><h2 class="h2s">Questions about giving?</h2><p>We're glad to talk through sponsorships, donor-advised fund grants, or company giving.</p></div>
 <a class="btn btn-lg" href="mailto:info@langar.one?subject=Giving%20to%20Langar%20One">Email Us</a></div>
-<p class="muted">Giving on behalf of a company? See <a href="../corporate-giving/">corporate giving</a>.</p>
+<p class="muted">More on giving: <a href="../sponsor-a-family/">sponsor a family</a> · <a href="../adopt-a-family-for-christmas/">adopt a family for Christmas</a> · <a href="../donor-advised-fund/">donor-advised fund giving</a> · <a href="../corporate-giving/">corporate giving</a></p>
 </div>'''
 
 FOUNDERS = '''<section class="page-hero"><div class="wrap"><h1>Our Founders</h1>
@@ -546,6 +546,9 @@ Founded in 2021 and based in the San Francisco Bay Area. Approved families recei
 - [Food Pantry Delivery]({SITE}/food-pantry-alternative/): free grocery delivery for people who cannot get to a food pantry
 - [Where We Deliver]({SITE}/locations/): cities served, including Los Angeles and San Francisco
 - [Corporate Giving]({SITE}/corporate-giving/): how companies sponsor families and match employee gifts
+- [Sponsor a Family]({SITE}/sponsor-a-family/): sponsor or adopt a family's groceries from $170 a month
+- [Adopt a Family for Christmas]({SITE}/adopt-a-family-for-christmas/): holiday grocery sponsorship for a family in need
+- [Donor-Advised Fund Giving]({SITE}/donor-advised-fund/): how to recommend a DAF grant, with EIN and mailing address
 - [Stories & Updates]({SITE}/stories/): articles on langar, getting free groceries delivered, and helping older adults find food
 - [Privacy Policy]({SITE}/privacy/)
 - [Terms & Conditions]({SITE}/terms/)

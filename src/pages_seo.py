@@ -189,11 +189,164 @@ def seo_pages(steps, form):
 <p class="muted"><a href="{{R}}locations/">All locations</a> · <a href="{{R}}seniors/">Free grocery delivery for seniors</a> · <a href="{{R}}food-pantry-alternative/">Food pantry delivery</a></p>
 </div>'''))
 
+    # ---- Donor pages
+    give_cta = lambda heading, text, label="Sponsor a Family": (
+        f'<div class="cta"><div><h2 class="h2s">{heading}</h2><p>{text}</p></div>'
+        f'<a class="btn btn-lg" href="{{R}}donate/#give">{label}</a></div>')
+    tiles = """<div class="grid g-impact">
+<div class="impact give"><b>$40</b><h3>A month</h3><p>Covers about one week of groceries for a family, every month.</p></div>
+<div class="impact give"><b>$85</b><h3>A month</h3><p>Covers half of one family's groceries, every month.</p></div>
+<div class="impact give"><b>$170</b><h3>A month</h3><p>Sponsors one family's grocery deliveries in full, every month.</p></div>
+<div class="impact give"><b>$510</b><h3>One time</h3><p>Sponsors one family through a complete 3-month support cycle.</p></div>
+</div>"""
+    help_card = (f'<div class="card"><h2 class="h3">Looking for help for your own family?</h2>'
+                 f'<p class="muted">Langar One delivers free groceries to families facing food insecurity. <a href="{form}" target="_blank" rel="noopener">Send us a request</a>. '
+                 'We review every request, approval depends on program capacity, and we cannot deliver the same day. If you need food now, call or text <strong>211</strong>.</p></div>')
+
+    # Sponsor a family
+    faq = [
+        ("How much does it cost to sponsor a family?", "It costs about $170 to deliver groceries to one family for a month. A one-time gift of $510 sponsors one family through a full three-month support cycle. Monthly gifts start at $40."),
+        ("What does my sponsorship pay for?", "Groceries, delivered to a family's door: fresh produce, proteins, grains, pantry staples, and dairy, chosen around what that family eats. The family pays nothing."),
+        ("Can I adopt a family for more than one month?", "Yes. A monthly gift of $170 keeps groceries arriving for one family month after month, and you can sponsor more than one family."),
+        ("Will I meet the family I sponsor?", "No. To protect families' privacy, we do not share their names or details with sponsors. Your gift is used to buy and deliver groceries to families in the program."),
+        ("Is my gift tax-deductible?", "Langar One Foundation is a 501(c)(3) charity, EIN 41-3146886. Donations are tax-deductible to the extent allowed by law."),
+        ("Can my company or group sponsor families?", "Yes. Companies, congregations, schools, and groups of friends can sponsor one family or many. See our corporate giving page, or email info@langar.one."),
+    ]
+    pages.append(dict(
+        path="sponsor-a-family/", crumb="Sponsor a Family",
+        title="Sponsor a Family: Adopt a Family's Groceries | Langar One",
+        desc="Sponsor a family in need for $170 a month. Your gift buys and delivers a family's groceries to their door. Adopt a family for a month or a full season.",
+        faq=faq,
+        body=hero("Sponsor a Family",
+                  "Adopt a family's groceries. $170 feeds one family for a month, delivered to their door, with food they choose and know how to cook.")
+        + f'''<div class="wrap section">
+<div class="head"><p class="eyebrow">What it costs to feed a family</p><h2 class="h2">Pick the sponsorship that fits you</h2>
+<p class="lead">Every amount maps to groceries on a real family's doorstep. Give once, or sponsor a family every month.</p></div>
+{tiles}
+</div>
+<section class="white"><div class="wrap section">
+<div class="head"><p class="eyebrow">How sponsoring a family works</p><h2 class="h2">From your gift to their kitchen</h2></div>
+<div class="grid g3">
+<div class="rule"><h3>1. You sponsor</h3><p class="muted">Choose an amount and give online, once or monthly. It takes about two minutes.</p></div>
+<div class="rule"><h3>2. We shop and deliver</h3><p class="muted">We buy groceries selected around a family's dietary and cultural preferences and have them delivered to the family's home.</p></div>
+<div class="rule"><h3>3. The family is supported for three months</h3><p class="muted">Approved families receive deliveries for three months, and can renew if the need continues. <a href="{{R}}how-it-works/">See how Langar One works</a>.</p></div>
+</div>
+</div></section>
+<div class="wrap section">
+<div class="head"><h2 class="h2">Who you are sponsoring</h2>
+<p class="lead">Families and individuals who qualify for food help but cannot easily get to a store or a food pantry: older adults, people with a disability or illness, and parents without a car or childcare.</p>
+<p class="muted">Many are referred to us by agencies that already care for them, such as <a href="{{R}}partners/">Meals on Wheels</a>. Langar One has made more than 2,000 grocery deliveries in five states since 2021. The idea comes from <a href="{{R}}what-is-langar/">langar</a>, the Sikh tradition of a free kitchen open to everyone.</p></div>
+</div>
+<div class="wrap section" style="gap:20px">
+{give_cta("Sponsor a family today", "$170 feeds one family for a month. Langar One Foundation is a 501(c)(3) charity, EIN " + EIN + ".")}
+<div class="head"><h2 class="h2s">Questions about sponsoring a family</h2></div>
+</div>
+''' + qa_block(faq) + f'''<div class="wrap section" style="gap:20px">
+{help_card}
+<p class="muted"><a href="{{R}}adopt-a-family-for-christmas/">Adopt a family for Christmas</a> · <a href="{{R}}donor-advised-fund/">Give through a donor-advised fund</a> · <a href="{{R}}corporate-giving/">Corporate giving</a> · <a href="{{R}}donate/">All ways to give</a></p>
+</div>'''))
+
+    # Adopt a family for Christmas
+    faq = [
+        ("How do I adopt a family for Christmas?", "With Langar One, you adopt a family by sponsoring their groceries. Give $170 to cover a family's groceries for a month, or $510 to cover the full three-month season, and we buy and deliver the food to their door."),
+        ("Do I buy and wrap gifts?", "No. Langar One does not run a wish-list or gift program. Your gift is groceries, delivered to a family's home so they can cook their own holiday meals."),
+        ("How much does it cost to sponsor a family for Christmas?", "$170 sponsors one family's groceries for a month. $510 sponsors one family for three months, through the holidays and into the new year."),
+        ("Can I adopt more than one family?", "Yes. Families, workplaces, congregations, and groups of friends can sponsor several families. Email info@langar.one if you would like help planning a group gift."),
+        ("How can my family get adopted for Christmas?", "Langar One does not match families with gift sponsors. If your family needs food, you can send us a request for free grocery delivery. We review every request, approval depends on program capacity, and we cannot deliver the same day. For help right now, including holiday programs near you, call or text 211."),
+    ]
+    pages.append(dict(
+        path="adopt-a-family-for-christmas/", crumb="Adopt a Family for Christmas",
+        title="Adopt a Family for Christmas: Sponsor Their Groceries | Langar One",
+        desc="Adopt a family for Christmas by sponsoring their groceries. $170 fills a family's kitchen for a month, delivered to their door. No shopping or wrapping.",
+        faq=faq,
+        body=hero("Adopt a Family for Christmas",
+                  "Sponsor a family for Christmas with the gift they will use every day: a kitchen full of groceries, delivered to their door.")
+        + f'''<div class="wrap section">
+<div class="head"><p class="eyebrow">A different kind of adopt-a-family</p><h2 class="h2">Give a family their holiday meals</h2>
+<p class="lead">Most adopt-a-family programs ask you to shop from a wish list. Here, your gift is food: real groceries a family chooses and cooks in their own kitchen.</p></div>
+<div class="grid g3">
+<div class="rule"><h3>$170 covers the holiday month</h3><p class="muted">One family's groceries for a month, delivered to their home.</p></div>
+<div class="rule"><h3>$510 covers the season</h3><p class="muted">Three months of groceries, through the holidays and into the new year, when help is often hardest to find.</p></div>
+<div class="rule"><h3>Nothing to shop for or wrap</h3><p class="muted">Give online in about two minutes. We buy the groceries and arrange delivery.</p></div>
+</div>
+</div>
+<section class="white"><div class="wrap section">
+<div class="head"><h2 class="h2">Who your Christmas gift reaches</h2>
+<p class="lead">Older adults, people with a disability or illness, and families without a car or childcare, who cannot easily get to a store or a food pantry.</p>
+<p class="muted">Groceries are selected around each family's dietary and cultural preferences, so the food on the table is food they know. To protect their privacy, we do not share families' names or details with sponsors. <a href="{{R}}how-it-works/">See how Langar One works</a>.</p></div>
+</div></section>
+<div class="wrap section">
+<div class="head"><h2 class="h2">Adopt a family as a group</h2>
+<p class="lead">Offices, congregations, classrooms, and families often sponsor together. Ten people giving $17 each feed a family for a month.</p>
+<p class="muted">Giving on behalf of a company? See <a href="{{R}}corporate-giving/">corporate giving</a>. Planning a fundraiser? <a href="{{R}}plan-event/">Host an event</a>.</p></div>
+</div>
+<div class="wrap section" style="gap:20px">
+{give_cta("Adopt a family this Christmas", "$170 feeds one family for a month. Langar One Foundation is a 501(c)(3) charity, EIN " + EIN + ".", "Sponsor a Family")}
+<div class="head"><h2 class="h2s">Questions about adopting a family for Christmas</h2></div>
+</div>
+''' + qa_block(faq) + f'''<div class="wrap section" style="gap:20px">
+{help_card}
+<p class="muted"><a href="{{R}}sponsor-a-family/">Sponsor a family all year</a> · <a href="{{R}}donor-advised-fund/">Give through a donor-advised fund</a> · <a href="{{R}}donate/">All ways to give</a></p>
+</div>'''))
+
+    # Donor-advised fund giving
+    faq = [
+        ("Can I give to Langar One from a donor-advised fund?", "Yes. Langar One Foundation is a 501(c)(3) public charity and can receive grants from donor-advised funds. Recommend a grant through your fund's sponsor using our legal name and EIN, 41-3146886."),
+        ("What information does my DAF sponsor need?", "Our legal name, Langar One Foundation; our EIN, 41-3146886; and our mailing address, 46539 Mission Blvd #1021, Fremont, CA 94539."),
+        ("Is there a minimum DAF grant?", "Langar One has no minimum. Your fund's sponsor may set its own minimum grant size."),
+        ("Can I recommend a recurring grant?", "Many DAF sponsors let you schedule a recurring grant. $170 a month sponsors one family's groceries on an ongoing basis."),
+        ("Will I get a tax receipt for a DAF grant?", "No. You received your tax deduction when you contributed to your donor-advised fund, so a grant from it is not deductible again. We will still acknowledge the grant if your sponsor shares your name with us."),
+    ]
+    pages.append(dict(
+        path="donor-advised-fund/", crumb="Donor-Advised Fund Giving",
+        title="DAF Giving: Donor-Advised Fund Grants | Langar One",
+        desc="Recommend a grant to Langar One Foundation from your donor-advised fund. EIN 41-3146886. $170 feeds one family for a month; $2,040 feeds a family for a year.",
+        faq=faq,
+        body=hero("Give Through Your Donor-Advised Fund",
+                  "A DAF grant to Langar One becomes groceries at a family's door. Here is everything your fund's sponsor will ask for.")
+        + f'''<div class="wrap section">
+<div class="head"><p class="eyebrow">DAF giving details</p><h2 class="h2">What to enter when you recommend a grant</h2></div>
+<div class="card"><p class="muted"><strong>Organization:</strong> Langar One Foundation<br><strong>Status:</strong> 501(c)(3) public charity<br><strong>EIN:</strong> {EIN}<br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539<br><strong>Contact:</strong> <a href="mailto:info@langar.one?subject=Donor-advised%20fund%20grant">info@langar.one</a></p></div>
+</div>
+<section class="white"><div class="wrap section">
+<div class="head"><p class="eyebrow">How to recommend a grant</p><h2 class="h2">Three steps</h2></div>
+<div class="grid g3">
+<div class="rule"><h3>1. Log in to your fund</h3><p class="muted">Sign in with your DAF sponsor, such as Fidelity Charitable, DAFgiving360, Vanguard Charitable, or a community foundation.</p></div>
+<div class="rule"><h3>2. Search for us</h3><p class="muted">Search for "Langar One Foundation" or EIN {EIN}, and enter the grant amount.</p></div>
+<div class="rule"><h3>3. Let us know</h3><p class="muted">Sponsors do not always pass on donor names. <a href="mailto:info@langar.one?subject=Donor-advised%20fund%20grant">Email us</a> so we can thank you and tell you what your grant did.</p></div>
+</div>
+</div></section>
+<div class="wrap section">
+<div class="head"><p class="eyebrow">What a grant does</p><h2 class="h2">Every grant maps to families fed</h2>
+<p class="lead">It costs about $170 to deliver groceries to one family for a month.</p></div>
+<div class="grid g3">
+<div class="rule"><h3>$510</h3><p class="muted">One family through a complete three-month support cycle.</p></div>
+<div class="rule"><h3>$2,040</h3><p class="muted">One family's groceries for a full year.</p></div>
+<div class="rule"><h3>$20,400</h3><p class="muted">Ten families' groceries for a full year.</p></div>
+</div>
+<p class="muted">Langar One has made more than 2,000 grocery deliveries in five states since 2021. <a href="{{R}}founders/">Meet our founders</a>, see <a href="{{R}}how-it-works/">how the program works</a>, or view our nonprofit profile on <a href="https://app.candid.org/profile/16525490/langar-one-foundation-41-3146886" target="_blank" rel="noopener">Candid</a>.</p>
+</div>
+<div class="wrap section" style="gap:20px">
+<div class="cta"><div><h2 class="h2s">Talk to us about a grant</h2><p>We are glad to answer questions from donors, advisors, and foundation staff.</p></div>
+<a class="btn btn-lg" href="mailto:info@langar.one?subject=Donor-advised%20fund%20grant">Email Us</a></div>
+<div class="head"><h2 class="h2s">Questions about DAF giving</h2></div>
+</div>
+''' + qa_block(faq) + f'''<div class="wrap section" style="gap:20px">
+<p class="muted"><a href="{{R}}sponsor-a-family/">Sponsor a family</a> · <a href="{{R}}corporate-giving/">Corporate giving</a> · <a href="{{R}}donate/">Give online</a></p>
+</div>'''))
+
     # ---- Corporate giving
+    corp_faq = [
+        ("How can a company support Langar One?", "Companies sponsor families' groceries with a company gift, match employee donations, or host a workplace fundraiser. It costs about $170 to deliver groceries to one family for a month."),
+        ("Is Langar One eligible for corporate matching gifts?", "Langar One Foundation is a 501(c)(3) public charity, EIN 41-3146886, which is what most matching-gift programs require. Check your company's program for its own rules."),
+        ("Can we give through our company foundation or donor-advised fund?", "Yes. Grants from company foundations and donor-advised funds are welcome. Use our legal name, Langar One Foundation, and EIN 41-3146886."),
+        ("Will we get a report on what our gift did?", "Yes. Email info@langar.one and we will tell you how many families your gift fed and for how long."),
+    ]
     pages.append(dict(
         path="corporate-giving/", crumb="Corporate Giving",
-        title="Corporate Giving: Sponsor Families' Groceries | Langar One",
-        desc="Companies can sponsor groceries for families in need, match employee donations, and host workplace food drives with Langar One, a 501(c)(3) charity.",
+        title="Corporate Giving Programs: Sponsor Families' Groceries | Langar One",
+        desc="Add hunger relief to your corporate giving program: sponsor families' groceries, match employee giving, or host a workplace drive with Langar One, a 501(c)(3).",
+        faq=corp_faq,
         body=hero("Corporate Giving: Sponsor Families' Groceries",
                   "Your company can put groceries on families' doorsteps: sponsor families, match employee gifts, or host a workplace drive.")
         + f'''<div class="wrap section">
@@ -205,11 +358,24 @@ def seo_pages(steps, form):
 <div class="rule"><h3>Host a workplace drive</h3><p class="muted">Run a fundraiser or awareness event with your team. <a href="{{R}}plan-event/">Plan an event</a> and we will help you set it up.</p></div>
 </div>
 </div>
+<div class="wrap section">
+<div class="head"><p class="eyebrow">For your corporate giving program</p><h2 class="h2">Where Langar One fits</h2>
+<p class="lead">Most corporate giving programs combine company gifts, employee giving, and volunteering. We can be part of each.</p></div>
+<div class="grid g3">
+<div class="rule"><h3>Company gifts and sponsorships</h3><p class="muted">A gift with a clear unit of impact: $170 feeds one family for a month, which is easy to report to leadership and staff.</p></div>
+<div class="rule"><h3>Employee giving and matching gifts</h3><p class="muted">Employees give through payroll or workplace giving platforms, and your match doubles it. Langar One is applying to the major platforms; tell us which one you use.</p></div>
+<div class="rule"><h3>Team volunteering</h3><p class="muted">Remote and skills-based roles suit distributed teams. <a href="{{R}}volunteer/">See volunteer options</a>.</p></div>
+</div>
+</div>
 <section class="white"><div class="wrap section">
 <div class="head"><h2 class="h2s">Details for your giving or finance team</h2>
 <p class="muted"><strong>Organization:</strong> Langar One Foundation<br><strong>Status:</strong> 501(c)(3) public charity<br><strong>EIN:</strong> {EIN}<br><strong>Mailing address:</strong> 46539 Mission Blvd #1021, Fremont, CA 94539</p>
 <p class="muted">Gifts from company foundations and donor-advised funds are welcome. Donations are tax-deductible to the extent allowed by law. <a href="{{R}}founders/">Meet our founders</a> or see <a href="{{R}}how-it-works/">how Langar One works</a>.</p></div>
 <div class="cta"><div><h2 class="h2s">Talk to us about a company gift</h2><p>Tell us about your company and what you would like to support.</p></div>
 <a class="btn btn-lg" href="mailto:info@langar.one?subject=Corporate%20giving">Email Us</a></div>
-</div></section>'''))
+</div></section>
+<div class="wrap section" style="gap:20px"><div class="head"><h2 class="h2s">Questions about corporate giving</h2></div></div>
+''' + qa_block(corp_faq) + f'''<div class="wrap section" style="gap:20px">
+<p class="muted"><a href="{{R}}sponsor-a-family/">Sponsor a family</a> · <a href="{{R}}donor-advised-fund/">Donor-advised fund giving</a> · <a href="{{R}}donate/">Give online</a></p>
+</div>'''))
     return pages
